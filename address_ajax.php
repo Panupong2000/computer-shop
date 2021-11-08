@@ -62,11 +62,10 @@
         function load_json_data_state(id, province_id) {
             var html_code = '';
             $.getJSON('https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_amphure.json', function(data) {
-                console.log(id);
                 html_code += '<option value="">Select ' + id + '</option>';
                 $.each(data, function(key, value) {
-                    //console.log(value)
                         if (value.province_id == province_id) {
+                            console.log(value.province_id)
                             html_code += '<option  value="' + value.id + '">' + value.name_th + '</option>';
                         }
                     
@@ -78,13 +77,14 @@
 
         function load_json_data_city(id, amphure_id) {
             var html_code = '';
+            console.log(amphure_id);
             $.getJSON('https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_tombon.json', function(data) {
-                console.log(id);
+                
                 html_code += '<option  value="">Select ' + id + '</option>';
                 $.each(data, function(key, value) {
-                    //console.log(value)
                     
-                        if (value.amphure_id == amphure_id) {
+                        if (Math.floor(value.id/100) == amphure_id) {
+                            console.log("amphure_id: "+Math.floor(value.id/100));
                             html_code += '<option  value="' + value.id + '">' + value.name_th + '</option>';
                         }
                     
@@ -98,7 +98,6 @@
             var html_code = '';
             $.getJSON('https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_tombon.json', function(data) {
                 $.each(data, function(key, value) {
-                    //console.log(value)
                     
                         if (value.id == city_id) {
                             html_code += '<option  value="' + value.zip_code + '">' + value.zip_code + '</option>';
@@ -123,8 +122,6 @@
         $(document).on('change', '#state', function() {
     
             var state_id = $(this).val();
-            console.log("state_id: ",state_id)
-            state_id = state_id%1000;
             if (state_id != '') {
                 load_json_data_city('city', state_id);
             } 
