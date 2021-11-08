@@ -11,7 +11,7 @@
     <br /><br />
     <div class="container" style="width:600px;">
     <form action="address_db.php" method="post">
-        <h2 align="center">JSON - Dynamic Dependent Dropdown List using Jquery and Ajax</h2><br /><br />
+        <h2 align="center">ที่อยู่ จัดส่ง</h2><br /><br />
         <select name="country" id="country" class="form-control input-lg">
     <option  value="">Select country</option>
    </select>
