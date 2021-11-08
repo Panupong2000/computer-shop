@@ -1,4 +1,29 @@
-<?php include "connect.php" ?>
+<?php
+
+session_start();
+include "connect.php" ;
+
+
+if (isset($_POST['add'])){
+    $p_id = $_POST['product_id'];
+     print_r($_POST['product_id']);
+    if(isset($_SESSION['cart'][$p_id]))
+		{
+            
+			$_SESSION['cart'][$p_id]++;
+            
+		}
+		else
+		{
+           
+			$_SESSION['cart'][$p_id]=1;
+		}
+        
+        echo "<script>alert('เพิ่มสินค้าลงในตระกร้าแล้ว')</script>";
+   
+}
+
+?>
 <html>
     <head> 
         <meta charset="utf-8">
@@ -6,37 +31,52 @@
     </head>
     
 <body>
-    <div>
+    <div class="section">
         <?php
-          $stmt = $pdo->prepare("SELECT * FROM product "); // ถ ้ามีค่าที่สงมาจากฟอร์ม ่
-        //   $value = '%' . $_GET["keyword"] . '%'; // ดึงค่าที่สงมาก าหนดให ้กับตัวแปรเงื่อนไข ่
-        //   $stmt->bindParam(1, $value); // ก าหนดชอตัวแปรเงื่อนไขที่จุดที่ก าหนด ื่ ? ไว ้
-          $stmt->execute(); // เริ่มค ้นหา
-          $stmt1 = $pdo->prepare("SELECT * FROM category ");
-          $stmt1->execute();
-        ?>
-    <div style="display:flex">
+          $sql1 = "SELECT * FROM product "; 
+          $sql2 = "SELECT * FROM category ";
 
-    <?php while ($row1 = $stmt1->fetch()) : ?>
+          $result1 = mysqli_query($conn, $sql1);
+          $result2 = mysqli_query($conn, $sql2);
+
+        ?>
+    <div class="menu">   
+    <?php while ($row1 = mysqli_fetch_array($result2)) : ?>
         <div class="vertical-menu">
             <a href="#" class="active"><?=$row1["cate_name"]?></a>
-
-         <?php endwhile; ?>
-         </div>
-
-        </div >
-    <div style="display:flex">
-        <?php while ($row = $stmt->fetch()) : ?>
-         <div style="padding: 15px; text-align: center">
-         <a>
-        <img src='img/<?=$row["imgpro"]?>.jpg' width='100'><br>
-        ชื่อ : <?=$row ["pname"]?><br>
-        ราคา: <?=$row ["price"]?> บาท<br>
-        รายละเอียด: <?=$row ["detail_product"]?>
-        </a>
-    </div>
+        </div>
     <?php endwhile; ?>
-    </div>
+    </div> 
+
+         <section class="product">
+             
+            <div class="box-container">
+        <?php while ($row = mysqli_fetch_array($result1)) : ?>
+            <div class="box">
+                <form action="product_menu.php" method="post">
+                <div class="relative">
+                    <div class="image">
+                        <img src='images/<?=$row["imgpro"]?>' alt="">
+                     </div>
+                    <div class="namepro">
+                    <span><?=$row ["pname"]?></span>
+                    </div>
+                    <div>
+
+                    </div>
+                    <div>
+                    <span><?=number_format($row ["price"])?></span>
+                    </div>
+                    <div>
+                    <button type="submit"  name="add">Add to Cart</button>
+                    <input type='hidden' name='product_id' value='<?=$row['id_product']?>'>
+                    </div>
+                </div>
+                </form>
+        </div>
+    <?php endwhile; ?>
+            </div>
+    </section>
         </div>
 </body>
 </html>

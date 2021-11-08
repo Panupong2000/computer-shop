@@ -1,5 +1,17 @@
+* {
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+}
+
 .vertical-menu {
-    width: 200px;
+    width: 250px;
     /* Set a width if you like */
 }
 
@@ -25,4 +37,74 @@
     background-color: #04AA6D;
     /* Add a green color to the "active/current" link */
     color: white;
+}
+
+.section {
+    display: flex;
+    padding-top: 30px;
+}
+
+.menu {
+    width: 250;
+    height: 100%;
+}
+
+.product .box-container {
+    flex-wrap: wrap;
+    padding-left: 40px;
+}
+
+.product .box-container .box {
+    padding: 10px;
+    display: inline-block;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+    border: .1rem solid rgba(0, 0, 0, .3);
+    border-radius: .5rem;
+    position: relative;
+}
+
+.product .box-container .box .relative {
+    width: 280px;
+    height: 400px;
+    position: relative;
+}
+
+.product .box-container .box .relative img {
+    height: 150px;
+    width: 150px;
+    padding-bottom: 30px;
+    position: relative;
+}
+
+.product .box-container .box .relative .name {
+    height: 100px;
+    position: relative;
+}
+
+.product .box-container .box .relative .price {
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    background: var(--red);
+    color: #fff;
+    font-size: 2rem;
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    position: relative;
+}
+
+.product .box-container .box .relative p {
+    padding-top: 20px;
+    color: #333;
+    font-size: 0.75rem;
+    position: relative;
+}
+
+.product .box-container .box:hover {
+    border: .1rem solid rgba(39, 28, 138, 0.3);
+    border-radius: .5rem;
+}
+
+.namepro {
+    height: 50px;
 }
