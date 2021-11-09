@@ -12,20 +12,23 @@
     <div class="container" style="width:600px;">
     <form action="address_db.php" method="post">
         <h2 align="center">ที่อยู่ จัดส่ง</h2><br /><br />
+        ที่อยู่:
+        <input name="address" id="address" class="form-control input-lg">
+        <br>
         <select name="country" id="country" class="form-control input-lg">
-    <option  value="">Select country</option>
+    <option  value="">เลือก จังหวัด</option>
    </select>
         <br />
         <select name="state" id="state" class="form-control input-lg">
-    <option  value="">Select state</option>
+    <option  value="">เลือก อำเภอ/เขต</option>
    </select>
         <br />
         <select name="city" id="city" class="form-control input-lg">
-    <option  value="">Select city</option>
+    <option  value="">เลือก ตำบล/แขวง</option>
    </select>
         <br />
         <select name="zipcode" id="zipcode" class="form-control input-lg">
-    <option value="">Select zipcode</option>
+    <option value="">เลือก รหัสไปรษณีย์</option>
    </select>
    <br>
    <button type="submit"  name="submit">Summit</button>
@@ -38,34 +41,28 @@
 <script>
     $(document).ready(function() {
 
-        load_json_data_country('country');
+        load_json_data_country();
 
-        function load_json_data_country(id, geography_id) {
+        function load_json_data_country() {
             var html_code = '';
             $.getJSON('https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_province.json', function(data) {
-                console.log(id);
-                html_code += '<option value="">Select ' + id + '</option>';
+                html_code += '<option value="">เลือก จังหวัด</option>';
                 $.each(data, function(key, value) {
-                    //console.log(value)
-                    
-                    if (id == 'country') {
                        
-                            html_code += '<option value="' + value.id + '">' + value.name_th + '</option>';
-                        
-                    }
+                            html_code += '<option value="' + value.id + '">' + value.name_th + '</option>';                    
+                    
                 });
                 $('#country').html(html_code);
             });
 
         }
 
-        function load_json_data_state(id, province_id) {
+        function load_json_data_state(province_id) {
             var html_code = '';
             $.getJSON('https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_amphure.json', function(data) {
-                html_code += '<option value="">Select ' + id + '</option>';
+                html_code += '<option value="">เลือก อำเภอ/เขต</option>';
                 $.each(data, function(key, value) {
                         if (value.province_id == province_id) {
-                            console.log(value.province_id)
                             html_code += '<option  value="' + value.id + '">' + value.name_th + '</option>';
                         }
                     
@@ -75,12 +72,12 @@
 
         }
 
-        function load_json_data_city(id, amphure_id) {
+        function load_json_data_city(amphure_id) {
             var html_code = '';
             console.log(amphure_id);
             $.getJSON('https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_tombon.json', function(data) {
                 
-                html_code += '<option  value="">Select ' + id + '</option>';
+                html_code += '<option  value="">เลือก ตำบล/แขวง</option>';
                 $.each(data, function(key, value) {
                     
                         if (Math.floor(value.id/100) == amphure_id) {
@@ -94,7 +91,7 @@
 
         }
 
-        function load_json_data_zipcode(id, city_id) {
+        function load_json_data_zipcode(city_id) {
             var html_code = '';
             $.getJSON('https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_tombon.json', function(data) {
                 $.each(data, function(key, value) {
@@ -110,34 +107,27 @@
         }
         
 
-        $(document).on('change', '#country', function() {
+        document.getElementById("country").addEventListener('change', function() {
            
             var country_id = $(this).val();
-            console.log("123 "+country_id);
             if (country_id != '') {
-                load_json_data_state('state', country_id);
+                load_json_data_state(country_id);
             }
         });
 
-        $(document).on('change', '#state', function() {
+        document.getElementById("state").addEventListener('change', function() {
     
             var state_id = $(this).val();
             if (state_id != '') {
-                load_json_data_city('city', state_id);
+                load_json_data_city(state_id);
             } 
         });
 
-        $(document).on('change', '#city', function() {
+        document.getElementById("city").addEventListener('change', function() {
             var state_id = $(this).val();
-            
-
-                console.log("state_id1: ",state_id)
              if (state_id != '') {
-
-                 load_json_data_zipcode('zipcode', state_id);
-             } else {
-                    $('#zipcode').html('<option value="">Select zipcode</option>');
-                }
+                 load_json_data_zipcode(state_id);
+             }
         });
     });
 </script>

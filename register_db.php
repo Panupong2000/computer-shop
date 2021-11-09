@@ -1,6 +1,6 @@
 <?php 
 
-    $db = mysqli_connect('localhost', 'root', '', 'ncg_computer');
+    $db = mysqli_connect('localhost', 'root', '', 'project_web');
 
     if (isset($_POST['username_check'])) {
         $username = $_POST['username'];
@@ -45,6 +45,7 @@
             exit();
         }
     }
+
     header('index.php');
 
 
