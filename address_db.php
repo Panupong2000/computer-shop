@@ -37,9 +37,10 @@ foreach($decoded_city as $values){
     }
 }
 
-$sql = "SELECT * FROM product where id_product =$p_id";
-		$query = mysqli_query($conn, $sql);
-		$row = mysqli_fetch_array($query);
+$sql4	= "INSERT INTO `address`( `address`, `country`, `state`, `city`, `zipcode`)
+ VALUES ('$address','$name_country','$name_state','$name_city','$zipcode')";
+        
+		$query4	= mysqli_query($conn, $sql4);
     
 
 ?>

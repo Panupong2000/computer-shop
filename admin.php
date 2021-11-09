@@ -22,9 +22,7 @@
     <nav class="navbar">
         <a href="product_menu.php">สินค้า</a>
         <a href="cart.php">ตระกร้าสินค้า</a>
-        <a href="order.php">ประวัติการสั่งซื้อ</a>
-        <a href="address.php">ที่อยู่</a>
-        <a href="login.php">เข้าสู่ระบบ</a>
+        <a href="login.php">login</a>
     </nav>
     <div id="menu-bar" class="fas fa-bars"></div>
 
