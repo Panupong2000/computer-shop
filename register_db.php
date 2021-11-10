@@ -46,7 +46,6 @@
         }
     }
 
-    header("location: index.php");
 
 
 ?>

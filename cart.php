@@ -30,10 +30,43 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="style_cart.css">
 <title>Shopping Cart</title>
 </head>
 
 <body>
+
+<header>
+    <a href="#" class="logo"><i class="fas fa-ytensils"></i>commm</a>
+
+    <div id="menu-bar" class="fas fa-bars"></div>
+
+
+  
+
+    
+    <nav class="navbar">
+        <a href="product_menu.php">สินค้า</a>
+        <a href="cart.php">ตระกร้าสินค้า</a>
+        <a href="order.php">ประวัติการสั่งซื้อ</a>
+        <a href="address.php">ที่อยู่</a>
+        <?php if (!isset($_SESSION['username'])) : ?>
+        <a href="login.php">เข้าสู่ระบบ</a>
+        <?php endif ?>
+        <?php if (isset($_SESSION['username'])) : ?>
+             <a> <strong><?php echo $_SESSION['username']; ?></strong></a>
+             <a href="index.php?logout='1'" style="color: red;">Logout</a>
+        <?php endif ?>
+        
+            
+            
+
+    </nav>
+    
+    <div id="menu-bar" class="fas fa-bars"></div>
+
+</header>
+
 <form id="frmcart" name="frmcart" method="post" action="?act=update">
   <table width="600" border="0" align="center" class="square">
     <tr>

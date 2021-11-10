@@ -28,8 +28,41 @@ if (isset($_POST['add'])){
         <meta charset="utf-8">
         <link rel="stylesheet" href="./style_product.css">
     </head>
+
     
 <body>
+
+<header>
+    <a href="#" class="logo"><i class="fas fa-ytensils"></i>commm</a>
+
+    <div id="menu-bar" class="fas fa-bars"></div>
+
+
+  
+
+    
+    <nav class="navbar">
+        <a href="product_menu.php">สินค้า</a>
+        <a href="cart.php">ตระกร้าสินค้า</a>
+        <a href="order.php">ประวัติการสั่งซื้อ</a>
+        <a href="address.php">ที่อยู่</a>
+        <?php if (!isset($_SESSION['username'])) : ?>
+        <a href="login.php">เข้าสู่ระบบ</a>
+        <?php endif ?>
+        <?php if (isset($_SESSION['username'])) : ?>
+             <a> <strong><?php echo $_SESSION['username']; ?></strong></a>
+             <a href="index.php?logout='1'" style="color: red;">Logout</a>
+        <?php endif ?>
+        
+            
+            
+
+    </nav>
+    
+    <div id="menu-bar" class="fas fa-bars"></div>
+
+</header>
+
     <div class="section">
         <?php
         if(isset($_GET['cate'])){
