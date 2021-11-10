@@ -9,6 +9,7 @@
 
 <body>
     <br /><br />
+    if()
     <div class="container" style="width:600px;">
     <form action="address_db.php" method="post">
         <h2 align="center">ที่อยู่ จัดส่ง</h2><br /><br />

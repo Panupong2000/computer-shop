@@ -18,6 +18,7 @@
             if  (mysqli_num_rows($result) == 1){
             
                 $_SESSION['username'] = $username;
+                $_SESSION['user_id'] = $id_user;
                 $_SESSION['success'] = "";
                 echo $pass;
                 header("location: index.php");

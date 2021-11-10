@@ -37,6 +37,7 @@
 		<div>
 			<button tyoe="button" name="register" id="reg_btn">Register</button>
 		</div>
+		<a href="login.php">กลับหน้า login</a>
 	</form>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

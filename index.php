@@ -1,4 +1,15 @@
-<?php include "connect.php" ?>
+<?php 
+
+    session_start();
+    include("connect.php");  
+
+    if (isset($_GET['logout'])) {
+        unset($_SESSION['username']);
+        unset($_SESSION['user_id']);
+        header('location: index.php');
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,13 +30,28 @@
 
     <div id="menu-bar" class="fas fa-bars"></div>
 
+
+  
+
+    
     <nav class="navbar">
         <a href="product_menu.php">สินค้า</a>
         <a href="cart.php">ตระกร้าสินค้า</a>
         <a href="order.php">ประวัติการสั่งซื้อ</a>
         <a href="address.php">ที่อยู่</a>
+        <?php if (!isset($_SESSION['username'])) : ?>
         <a href="login.php">เข้าสู่ระบบ</a>
+        <?php endif ?>
+        <?php if (isset($_SESSION['username'])) : ?>
+             <a> <strong><?php echo $_SESSION['username']; ?></strong></a>
+             <a href="index.php?logout='1'" style="color: red;">Logout</a>
+        <?php endif ?>
+        
+            
+            
+
     </nav>
+    
     <div id="menu-bar" class="fas fa-bars"></div>
 
 </header>
@@ -48,6 +74,8 @@
     <div class="image">
         <img src="images/home come.png" alt="">
     </div>
+
+   
 </section>    
 
 
