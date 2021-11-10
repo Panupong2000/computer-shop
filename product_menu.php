@@ -6,7 +6,6 @@ include "connect.php" ;
 
 if (isset($_POST['add'])){
     $p_id = $_POST['product_id'];
-     print_r($_POST['product_id']);
     if(isset($_SESSION['cart'][$p_id]))
 		{
             
@@ -33,7 +32,13 @@ if (isset($_POST['add'])){
 <body>
     <div class="section">
         <?php
-          $sql1 = "SELECT * FROM product "; 
+        if(isset($_GET['cate'])){
+            $id_cate = $_GET['cate'];
+            $sql1 = "SELECT * FROM product WHERE id_cate = $id_cate"; 
+        }else{
+            $sql1 = "SELECT * FROM product ";
+        }
+          
           $sql2 = "SELECT * FROM category ";
 
           $result1 = mysqli_query($conn, $sql1);
@@ -43,7 +48,7 @@ if (isset($_POST['add'])){
     <div class="menu">   
     <?php while ($row1 = mysqli_fetch_array($result2)) : ?>
         <div class="vertical-menu">
-            <a href="#" class="active"><?=$row1["cate_name"]?></a>
+            <a href="product_menu.php?cate=<?=$row1["Id_cate"]?>" class="active"><?=$row1["cate_name"]?></a>
         </div>
     <?php endwhile; ?>
     </div> 

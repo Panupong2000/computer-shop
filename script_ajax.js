@@ -5,7 +5,7 @@ $('document').ready(function() {
     // var name_state = false;
     // var Lname_state = false;
     // var phone_state = false;
-    
+
 
     $('#username').on('blur', function() {
         var username = $('#username').val();
@@ -72,7 +72,7 @@ $('document').ready(function() {
     //         return;
     //     }
     //     });
-    
+
     // $('#Lname').on('blur', function() {
     //      var Lname = $('#Lname').val();
     //      if (Lname == '') {
@@ -87,7 +87,7 @@ $('document').ready(function() {
     //         return;
     //     }
     //     });
-   
+
 
     $('#reg_btn').on("click", function(e) {
         var username = $("#username").val();
@@ -96,9 +96,9 @@ $('document').ready(function() {
         var Lname = $("#Lname").val();
         var phone = $("#phone").val();
         var password = $("#password").val();
-        
 
-        if (username_state == false || email_state == false ) {
+
+        if (username_state == false || email_state == false) {
             e.preventDefault();
             $("#error_msg").text("Fix the errors in the form first");
         } else {

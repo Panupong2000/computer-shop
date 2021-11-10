@@ -5,6 +5,7 @@
 
     if (isset($_GET['logout'])) {
         unset($_SESSION['username']);
+        unset($_SESSION['user_id']);
         header('location: index.php');
     }
 
@@ -38,10 +39,12 @@
         <a href="cart.php">ตระกร้าสินค้า</a>
         <a href="order.php">ประวัติการสั่งซื้อ</a>
         <a href="address.php">ที่อยู่</a>
+        <?php if (!isset($_SESSION['username'])) : ?>
         <a href="login.php">เข้าสู่ระบบ</a>
-        <a href="index.php?logout='1'" style="color: red;">Logout</a>
+        <?php endif ?>
         <?php if (isset($_SESSION['username'])) : ?>
              <a> <strong><?php echo $_SESSION['username']; ?></strong></a>
+             <a href="index.php?logout='1'" style="color: red;">Logout</a>
         <?php endif ?>
         
             

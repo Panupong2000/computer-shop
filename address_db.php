@@ -37,10 +37,12 @@ foreach($decoded_city as $values){
     }
 }
 
-$sql4	= "INSERT INTO `address`( `address`, `country`, `state`, `city`, `zipcode`)
+$sql	= "INSERT INTO `address`( `address`, `country`, `state`, `city`, `zipcode`)
  VALUES ('$address','$name_country','$name_state','$name_city','$zipcode')";
         
-		$query4	= mysqli_query($conn, $sql4);
+		$query4	= mysqli_query($conn, $sql);
+
+    header('address.php');
     
 
 ?>
