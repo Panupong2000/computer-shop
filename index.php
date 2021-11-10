@@ -53,64 +53,7 @@
 
 <!-- home section ends -->
 
-<!-- section starts -->
 
-<section class="product" id="product">
-    <h1 class="heading">our<span>product</span></h1>
-
-    <div class="box-container">
-
-        <div class="box">
-            <img src="images/cpu.png" width="300" alt="">
-            
-                <h3>cpu</h3>
-                <p>cpu ขายของ</p>
-            
-        </div>
-    
-        <div class="box">
-            <img src="images/desktop.png" width="300" alt="">
-            
-                <h3>com</h3>
-                <p>com ขายของ</p>
-            
-        </div>
-    
-        <div class="box">
-            <img src="images/mainboard.png" width="300" alt="">
-            
-                <h3>mainboard</h3>
-                <p>mainboard ขายของ</p>
-            
-        </div>
-    
-        <div class="box">
-            <img src="images/ram.png" width="300" alt="">
-            
-               
-                <h3>ram</h3>
-                <p>ram ขายของ</p>
-            
-        </div>
-    
-        <div class="box">
-            <img src="images/computer-hardware.png" width="300" alt="">
-            
-                <h3>computer-hardware</h3>
-                <p>computer-hardware ขายของ</p>
-            
-        </div>
-    
-        
-    </div>
-
-    
-
-    
-
-</section>
-
-<!-- section ends -->
 
 
 <!-- popular starts -->

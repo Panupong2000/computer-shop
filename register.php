@@ -7,6 +7,7 @@
 	<title>Register</title>
 
 	<link rel="stylesheet" href="style_login.css">
+	
 </head>
 <body>
 	
@@ -14,7 +15,7 @@
 		<h1>Register</h1>
 		<div id="error_msg"></div>
 		<div>
-			<input type="text" name="username" placeholder="Username" id="username">
+			<input type="text" name="username" placeholder="Username" id="username" >
 			<span></span>
 		</div>
 		<div>
@@ -22,10 +23,10 @@
 			<span></span>
 		</div>
         <div>
-			<input type="name" name="name" placeholder="name" id="name">
+			<input type="name" name="name" placeholder="name" id="name" required pattern="^[ก-๏\s]+$">
 		</div>
         <div>
-			<input type="Lname" name="Lname" placeholder="Lastname" id="Lname">
+			<input type="Lname" name="Lname" placeholder="Lastname" id="Lname" required pattern="^[ก-๏\s]+$">
 		</div>
         <div>
 			<input type="phone" name="phone" placeholder="Phone" id="phone">
