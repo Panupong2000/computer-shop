@@ -125,10 +125,8 @@ header .navbar a {
 .home {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
-    min-height: 40vh;
-    align-items: center;
-    background-size: cover;
-    background-position: center;
+    padding-top: 175px;
+    padding-left: 600px;
     font-size: large;
+    
 }
