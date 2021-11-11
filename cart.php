@@ -6,13 +6,13 @@
 			$p_id = $_GET['id_product'];
 		}
 	$act = $_GET['act'];
-
+	
 	if($act=='remove' && !empty($p_id))  //ยกเลิกการสั่งซื้อ
 	{
 		unset($_SESSION['cart'][$p_id]);
 	}
 
-	if($act=='update')
+	if($act=='update'&& !empty($p_id))
 	{
 		$amount_array = $_POST['amount'];
 		foreach($amount_array as $p_id=>$amount)
@@ -40,10 +40,6 @@
     <a href="#" class="logo"><i class="fas fa-ytensils"></i>commm</a>
 
     <div id="menu-bar" class="fas fa-bars"></div>
-
-
-  
-
     
     <nav class="navbar">
         <a href="product_menu.php">สินค้า</a>
@@ -66,7 +62,7 @@
     <div id="menu-bar" class="fas fa-bars"></div>
 
 </header>
-
+<body style="padding-top:100px; text-align:center;">
 <form id="frmcart" name="frmcart" method="post" action="?act=update">
   <table width="600" border="0" align="center" class="square">
     <tr>
