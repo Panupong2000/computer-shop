@@ -75,6 +75,7 @@
       <b>ตะกร้าสินค้า</span></td>
     </tr>
     <tr>
+	  <td align="center" bgcolor="#EAEAEA">รูป</td>
       <td bgcolor="#EAEAEA">สินค้า</td>
       <td align="center" bgcolor="#EAEAEA">ราคา</td>
       <td align="center" bgcolor="#EAEAEA">จำนวน</td>
@@ -96,6 +97,7 @@ if(!empty($_SESSION['cart']))
 		 $total += $sum;
 		
 		echo "<tr>";
+		echo "<td width='300'><img src='images/" . $row["imgpro"] . "'width='150' height='150'></td>";
 		echo "<td width='334'>" . $row["pname"] . "</td>";
 		echo "<td width='46' align='right'>" .number_format($row["price"],2) . "</td>";
 		echo "<td width='57' align='right'>";  

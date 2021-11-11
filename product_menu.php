@@ -30,7 +30,7 @@ if (isset($_POST['add'])){
     </head>
 
     
-<body>
+<body style="font-size: large;">
 
 <header>
     <a href="#" class="logo"><i class="fas fa-ytensils"></i>commm</a>
