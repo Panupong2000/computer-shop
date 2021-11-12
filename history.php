@@ -60,8 +60,6 @@
       <td align="center" bgcolor="#EAEAEA">ลบ</td>
     </tr>
 <?php
-$idd=$_SESSION["user_id"];
-echo $idd;
 if(!empty($_SESSION['username']))
 {
 	include("connect.php");
