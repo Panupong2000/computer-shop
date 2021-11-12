@@ -30,10 +30,10 @@ if (isset($_POST['add'])){
     </head>
 
     
-<body style="font-size: large;">
+<body >
 
 <header>
-    <a href="#" class="logo"><i class="fas fa-ytensils"></i>commm</a>
+    <a href="index.php" class="logo"><i class="fas fa-ytensils"></i>commm</a>
 
     <div id="menu-bar" class="fas fa-bars"></div>
 

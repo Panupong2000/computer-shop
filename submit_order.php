@@ -50,10 +50,11 @@ $sum=0;
 		$sql3	= "select * from product where id_product=$p_id";
 		$query3	= mysqli_query($conn, $sql3);
 		$row3	= mysqli_fetch_array($query3);
+		$pname = $row3['pname'];
 		$total1	= $row3['price']*$qty;
         echo "  ";
 		
-		$sql4	= "INSERT INTO `detail`(`price`, `amount`, `id_product`, `id_order`) VALUES ('$total1','$qty','$p_id','$o_id')";
+		$sql4	= "INSERT INTO `detail`(`price`, `amount`,`name`, `id_product`, `id_order`) VALUES ('$total1','$qty','$pname','$p_id','$o_id')";
         
 		$query4	= mysqli_query($conn, $sql4);
 	}
