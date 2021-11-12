@@ -8,4 +8,11 @@
     $detail = $_POST["detail"];
     $id = $_POST["pid"];
 
+    
+		$sql = "UPDATE product SET pname=$pname , price=$price , Amount=$amount , imgpro=$imgpro , detail_product=$detail , Id_cate = $cate where id_product =$id";
+		$query = mysqli_query($conn, $sql);
+		$row = mysqli_fetch_array($query);
+
+    header("location: admin_product.php")
+
 ?>
