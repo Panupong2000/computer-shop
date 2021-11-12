@@ -1,29 +1,7 @@
 <?php
 	session_start();
 	
-	 if (isset($_GET['act'])){
-		if (isset($_GET['id_product'])){
-			$p_id = $_GET['id_product'];
-		}
-	$act = $_GET['act'];
-
-	if($act=='remove' && !empty($p_id))  //ยกเลิกการสั่งซื้อ
-	{
-		unset($_SESSION['cart'][$p_id]);
-	}
-
-	if($act=='update')
-	{
-		$amount_array = $_POST['amount'];
-		foreach($amount_array as $p_id=>$amount)
-		{
-			$_SESSION['cart'][$p_id]=$amount;
-		}
-	}
-
-	 }
 	
-
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +26,7 @@
     <nav class="navbar">
         <a href="product_menu.php">สินค้า</a>
         <a href="cart.php">ตระกร้าสินค้า</a>
-        <a href="order.php">ประวัติการสั่งซื้อ</a>
+        <a href="history.php">ประวัติการสั่งซื้อ</a>
         <a href="address.php">ที่อยู่</a>
         <?php if (!isset($_SESSION['username'])) : ?>
         <a href="login.php">เข้าสู่ระบบ</a>
@@ -75,8 +53,7 @@
       <b>ตะกร้าสินค้า</span></td>
     </tr>
     <tr>
-	  <td align="center" bgcolor="#EAEAEA">รูป</td>
-      <td bgcolor="#EAEAEA">สินค้า</td>
+	 
       <td align="center" bgcolor="#EAEAEA">ราคา</td>
       <td align="center" bgcolor="#EAEAEA">จำนวน</td>
       <td align="center" bgcolor="#EAEAEA">รวม(บาท)</td>
@@ -84,42 +61,37 @@
     </tr>
 <?php
 $total=0;
-if(!empty($_SESSION['cart']))
+if(!empty($_SESSION['user_id']))
 {
 	include("connect.php");
-	foreach($_SESSION['cart'] as $p_id=>$qty)
-	{
-		$sql = "SELECT * FROM product where id_product =$p_id";
+		
+		$idd=["user_id"];
+		$sql = "SELECT * FROM orders where id_user ='$idd'";
 		$query = mysqli_query($conn, $sql);
-		$row = mysqli_fetch_array($query);
+		while($row = mysqli_fetch_array($query)){
 
-		$sum = $row['price'] * $qty;
-		 $total += $sum;
+		
 		
 		echo "<tr>";
-		echo "<td width='300'><img src='images/" . $row["imgpro"] . "'width='150' height='150'></td>";
-		echo "<td width='334'>" . $row["pname"] . "</td>";
-		echo "<td width='46' align='right'>" .number_format($row["price"],2) . "</td>";
-		echo "<td width='57' align='right'>";  
-		echo "<input type='text' name='amount[$p_id]' value='$qty' size='2'/></td>";
-		echo "<td width='93' align='right'>".number_format($sum,2)."</td>";
-		//remove product
-		echo "<td width='46' align='center'><a href='cart.php?id_product=$p_id&act=remove'>ลบ</a></td>";
+		echo "<td width='300'>" . $row["order_date"] . "></td>";
+		echo "<td width='334'>" . $row["totalprice"] . "</td>";
+		echo "<td width='46' align='right'>" . $row["status"] . "</td>";
+		echo "<td width='57' align='right'></td>";  
+		
+		
+		
+		
 		echo "</tr>";
-	}
-	echo "<tr>";
-  	echo "<td colspan='3' bgcolor='#CEE7FF' align='center'><b>ราคารวม</b></td>";
-  	echo "<td align='right' bgcolor='#CEE7FF'>"."<b>".number_format($total,2)."</b>"."</td>";
-  	echo "<td align='left' bgcolor='#CEE7FF'></td>";
-	echo "</tr>";
+	
+}
 }
 ?>
 <tr>
 <td><a href="product_menu.php">กลับหน้ารายการสินค้า</a></td>
 <td colspan="4" align="right">
-	<input type="submit" name="button" id="button" value="ปรับปรุง" />
+	
 	<input type='hidden' name='id_product' value='<?=$row['id_product']?>'>
-    <input type="button" name="Submit2" value="สั่งซื้อ" onclick="window.location='submit_order.php';" />
+    
 </td>
 </tr>
 </table>
