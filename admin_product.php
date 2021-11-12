@@ -53,6 +53,7 @@
       <td align="center" bgcolor="#EAEAEA">รายละเอียด</td>
       <td align="center" bgcolor="#EAEAEA">หมวดหมู่</td>
       <td align="center" bgcolor="#EAEAEA">ลบ</td>
+      <td align="center" bgcolor="#EAEAEA">แก้ไข</td>
     </tr>
  <?php
 
@@ -69,14 +70,15 @@
 
 		while ($row = mysqli_fetch_array($query)){
 		echo "<tr>";
-		echo "<td width='300'><img src='images/" . $row["imgpro"] . "'width='150' height='150'></td>";
-		echo "<td width='334'>" . $row["pname"] . "</td>";
-		echo "<td width='46' align='right'>" .$row["price"] . "</td>";
-		echo "<td width='57' align='right'> ".$row["Amount"] ."</td>";
-		echo "<td width='93' align='right'>".$row["detail_product"] ."</td>";
-        echo "<td width='93' align='right'>".$row["catename"] ."</td>";
+		echo "<td '><img src='images/" . $row["imgpro"] . "'width='150' height='150'></td>";
+		echo "<td >" . $row["pname"] . "</td>";
+		echo "<td  align='right'>" .$row["price"] . "</td>";
+		echo "<td  align='right'> ".$row["Amount"] ."</td>";
+		echo "<td  align='right'>".$row["detail_product"] ."</td>";
+        echo "<td  align='right'>".$row["catename"] ."</td>";
 		//remove product
-		echo "<td width='46' align='center'><a href='admin_product.php?del=del&id=" .$row["id_product"] . "'>ลบ</a></td>";
+		echo "<td ' align='center'><a href='admin_product.php?del=del&id=" .$row["id_product"] . "'>ลบ</a></td>";
+        echo "<td  align='center'><a href='edit_product.php?id=" .$row["id_product"] . "'>แก้ไข</a></td>";
 		echo "</tr>";
         }
 
