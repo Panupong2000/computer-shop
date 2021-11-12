@@ -50,40 +50,43 @@
   <table width="600" border="0" align="center" class="square">
     <tr>
       <td colspan="5" bgcolor="#CCCCCC">
-      <b>ประวัติการสั่งซื้อ</span></td>
+      <b>รายละเอียดสินค้า</span></td>
     </tr>
     <tr>
 	 
-      <td align="center" bgcolor="#EAEAEA">เวลา</td>
-      <td align="center" bgcolor="#EAEAEA">ราคา</td>
-      <td align="center" bgcolor="#EAEAEA">รายละเอียด</td>
-	  <td align="center" bgcolor="#EAEAEA">จำนวน</td>
-	   <td align="center" bgcolor="#EAEAEA">สถานะการสั่งซื้อ</td>
+      <td align="center" bgcolor="#EAEAEA">ลำดับที่</td>
+      <td align="center" bgcolor="#EAEAEA">ชื่อสินค้า</td>
+      <td align="center" bgcolor="#EAEAEA">จำนวน</td>
+	  <td align="center" bgcolor="#EAEAEA">ราคา</td>
+	   
      
     </tr>
 <?php
 if(!empty($_SESSION['username']))
 {
 	include("connect.php");
+    $id = $_GET["ID"];
+    $query = "SELECT * FROM detail WHERE id_order = '$id'" or die("Error:" . mysqli_error($con));
+    $result = mysqli_query($conn, $query);
+    $i = 1; 
 
-    $username=$_SESSION["username"];
 
-		$sql = "SELECT * FROM orders JOIN user ON orders.id_user=user.id_user where user.username ='$username'";
-    $query = mysqli_query($conn, $sql);
-
-		while ($row = mysqli_fetch_array($query)){
-		
-		echo "<tr>";
-		echo "<td width='300' align='center'>" . $row["order_date"] . "></td>";
-		echo "<td width='334' align='center'>" . $row["totalprice"] . "</td>";
-		// echo "<td width='800' align='center'>รายละเอียดออเดอร์</td>";
-		echo "<td width='800' align='center'>" ."<a href='history_detail.php?ID=$row[0]' >".'รายละเอียดออเดอร์'."</td>";
-		echo "<td width='334' align='center'>" . $row["amount"] . "</td>";
-		echo "<td width='600' align='center'>" . $row["status"] . "</td>";
-		 
-		
-		echo "</tr>";
-}
+     while ($row = mysqli_fetch_array($result)) {
+        $id_product = $row["id_product"];
+        $query1 = "SELECT * FROM product where id_product ='$id_product'";
+        $result1 = mysqli_query($conn, $query1);
+        echo "<tr align='center'>";
+        echo "<td width='600'>" . $i .  "</td> ";
+        echo "<td width='600' align='center'>" . $row["pname"] . "</td>";
+        echo "<td>" . $row["amount"] .  " ชิ้น</td> ";
+        echo "<td width='600'> &nbsp; &nbsp; &nbsp; &nbsp;" . number_format($row["price"], 2) .  " บาท</td> ";
+        
+        echo "</tr>";
+        $i++;
+      }
+      mysqli_close($conn);
+      
+    
 }
 ?>
 <tr>
