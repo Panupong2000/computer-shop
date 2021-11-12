@@ -11,7 +11,10 @@
 <body>
 <!--สร้างตัวแปรสำหรับบันทึกการสั่งซื้อ -->
 <?php
-
+if(empty($_SESSION['username'])){
+	echo "<script>alert('โปรดลงทะเบียนก่อน')</script>";
+	header("location : login.php");
+}
 $total=0;
 $total_qty=0;
 $sum=0;
@@ -27,9 +30,15 @@ $sum=0;
 
 	$dttm = Date("Y-m-d G:i:s");
 
+	$username = $_SESSION['username'];
+	$sql5 = "SELECT * FROM user where username ='$username'";
+    $query5 = mysqli_query($conn, $sql5);
+	$row5 = mysqli_fetch_array($query5);
+
 	//บันทึกการสั่งซื้อลงใน order
+	$id_user = $row5["id_user"];
 	$sql1	= "INSERT INTO `orders`(`order_date`, `totalprice`, `amount`, `id_user`) 
-                 VALUES ( '$dttm','$total','$total_qty','1')";
+                 VALUES ( '$dttm','$total','$total_qty','$id_user')";
     
 	$query1	= mysqli_query($conn, $sql1);
 

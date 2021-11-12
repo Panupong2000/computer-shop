@@ -8,27 +8,6 @@
         unset($_SESSION['user_id']);
         header('location: index.php');
     }
-    if (isset($_GET['act'])){
-		if (isset($_GET['id_product'])){
-			$p_id = $_GET['id_product'];
-		}
-	$act = $_GET['act'];
-
-	if($act=='remove' && !empty($p_id))  //ยกเลิกการสั่งซื้อ
-	{
-		unset($_SESSION['cart'][$p_id]);
-	}
-
-	if($act=='update')
-	{
-		$amount_array = $_POST['amount'];
-		foreach($amount_array as $p_id=>$amount)
-		{
-			$_SESSION['cart'][$p_id]=$amount;
-		}
-	}
-
-	 }
 
 ?>
 <!DOCTYPE html>
@@ -67,43 +46,42 @@
       <b>ตะกร้าสินค้า</span></td>
     </tr>
     <tr>
+	  <td align="center" bgcolor="#EAEAEA">รูป</td>
       <td bgcolor="#EAEAEA">สินค้า</td>
       <td align="center" bgcolor="#EAEAEA">ราคา</td>
       <td align="center" bgcolor="#EAEAEA">จำนวน</td>
-      <td align="center" bgcolor="#EAEAEA">รวม(บาท)</td>
+      <td align="center" bgcolor="#EAEAEA">รายละเอียด</td>
+      <td align="center" bgcolor="#EAEAEA">หมวดหมู่</td>
       <td align="center" bgcolor="#EAEAEA">ลบ</td>
+      <td align="center" bgcolor="#EAEAEA">แก้ไข</td>
     </tr>
-<!-- <?php
-$total=0;
-if(!empty($_SESSION['cart']))
-{
-	include("connect.php");
-	foreach($_SESSION['cart'] as $p_id=>$qty)
-	{
-		$sql = "SELECT * FROM product where id_product =$p_id";
-		$query = mysqli_query($conn, $sql);
-		$row = mysqli_fetch_array($query);
+ <?php
 
-		$sum = $row['price'] * $qty;
-		 $total += $sum;
-		
+	include("connect.php");
+    if(isset($_GET['del'])){
+        $id = $_GET['id'];
+        $sql2 = "DELETE FROM product WHERE id_product=$id";
+		$query2 = mysqli_query($conn, $sql2);
+    }
+
+
+		$sql = "SELECT id_product , imgpro , pname , price , Amount , detail_product , category.cate_name as catename FROM product JOIN category ON product.Id_cate=category.Id_cate";
+		$query = mysqli_query($conn, $sql);
+
+		while ($row = mysqli_fetch_array($query)){
 		echo "<tr>";
+		echo "<td width='300'><img src='images/" . $row["imgpro"] . "'width='150' height='150'></td>";
 		echo "<td width='334'>" . $row["pname"] . "</td>";
-		echo "<td width='46' align='right'>" .number_format($row["price"],2) . "</td>";
-		echo "<td width='57' align='right'>";  
-		echo "<input type='text' name='amount[$p_id]' value='$qty' size='2'/></td>";
-		echo "<td width='93' align='right'>".number_format($sum,2)."</td>";
+		echo "<td width='46' align='right'>" .$row["price"] . "</td>";
+		echo "<td width='57' align='right'> ".$row["Amount"] ."</td>";
+		echo "<td width='93' align='right'>".$row["detail_product"] ."</td>";
+        echo "<td width='93' align='right'>".$row["catename"] ."</td>";
 		//remove product
-		echo "<td width='46' align='center'><a href='cart.php?id_product=$p_id&act=remove'>ลบ</a></td>";
+		echo "<td width='46' align='center'><a href='admin_product.php?del=del&id=" .$row["id_product"] . "'>ลบ</a></td>";
 		echo "</tr>";
-	}
-	echo "<tr>";
-  	echo "<td colspan='3' bgcolor='#CEE7FF' align='center'><b>ราคารวม</b></td>";
-  	echo "<td align='right' bgcolor='#CEE7FF'>"."<b>".number_format($total,2)."</b>"."</td>";
-  	echo "<td align='left' bgcolor='#CEE7FF'></td>";
-	echo "</tr>";
-}
-?> -->
+        }
+
+?> 
 <tr>
 <td><a href="product_menu.php">กลับหน้ารายการสินค้า</a></td>
 <td colspan="4" align="right">

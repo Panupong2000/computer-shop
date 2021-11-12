@@ -60,17 +60,16 @@
       <td align="center" bgcolor="#EAEAEA">ลบ</td>
     </tr>
 <?php
-$total=0;
-if(!empty($_SESSION['user_id']))
+if(!empty($_SESSION['username']))
 {
 	include("connect.php");
-		
-		$idd=["user_id"];
-		$sql = "SELECT * FROM orders where id_user ='$idd'";
-		$query = mysqli_query($conn, $sql);
-		while($row = mysqli_fetch_array($query)){
 
-		
+    $username=$_SESSION["username"];
+
+		$sql = "SELECT * FROM orders JOIN user ON orders.id_user=user.id_user where user.username ='$username'";
+    $query = mysqli_query($conn, $sql);
+
+		while ($row = mysqli_fetch_array($query)){
 		
 		echo "<tr>";
 		echo "<td width='300'>" . $row["order_date"] . "></td>";
@@ -78,11 +77,7 @@ if(!empty($_SESSION['user_id']))
 		echo "<td width='46' align='right'>" . $row["status"] . "</td>";
 		echo "<td width='57' align='right'></td>";  
 		
-		
-		
-		
 		echo "</tr>";
-	
 }
 }
 ?>
