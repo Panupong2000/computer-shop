@@ -33,7 +33,7 @@
     <nav class="navbar">
         <a href="admin.php">หมวดหมู่</a>
         <a href="admin_product.php">สินค้า</a>
-        <a href="">ออเดอร์</a>
+        <a href="admin_submit.php">ออเดอร์</a>
         <a href="admin_user.php">ผู้ใช้</a>
         <?php if (isset($_SESSION['username'])) : ?>
              <a> <strong><?php echo $_SESSION['username']; ?></strong></a>
