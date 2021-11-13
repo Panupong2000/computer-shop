@@ -79,7 +79,21 @@ if(!empty($_SESSION['username']))
 		// echo "<td width='800' align='center'>รายละเอียดออเดอร์</td>";
 		echo "<td width='1200' align='center'>" ."<a href='history_detail.php?ID=$row[0]' >".'รายละเอียดออเดอร์'."</td>";
 		echo "<td width='334' align='center'>" . $row["amount"] . "</td>";
-		echo "<td width='1200' align='center'>" . $row["status"] . "</td>";
+        echo "<td width='20000' align='center'>" . $row["status"] . "</td>";
+		echo "<td width='20000' align='center' >" . "<a href='history_detail.php?ID=$row[0]' >" . '<i class="bi bi-clipboard-data " style="color : #529714;font-size: 25px;"></i>' .  "</td> ";
+        echo "<td width='20000' align='center'>";
+                if ($row["status"] == "รอดำเนินการ") {
+        echo "<a href='#!'  ><span class='spinner-border spinner-border-sm' role='status' ></span>กำลังดำเนินก</a>";
+                } else if ($row["status"] == "cancel") {
+        echo "<a href='#!' class='btn btn-danger  mt-1 mb-1'>ยกเลิกแล้ว</a>";
+                } else {
+        echo   "<a  class='btn btn-success  mt-1 mb-1'>เสร็จสิ้นแล้ว</a>";
+                }
+        echo "</td>";
+        echo "<td width='20000' align='center'>";
+                if ($row["status"] == "รอดำเนินการ") {
+        echo "<a href='admin_submit1.php?ID_Orders=$row[0]' onclick=\"return confirm('ยืนยันการยอมรับ... !!!')\"  >ยอมรับออเดอร์</a>";
+        echo "<a href='admin_submit2.php?ID_Orders=$row[0]' onclick=\"return confirm('ยืนยันการยกเลิก... !!!')\"  >ยกเลิกออเดอร์</a>";}
 		 
 		
 		echo "</tr>";

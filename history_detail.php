@@ -77,7 +77,7 @@ if(!empty($_SESSION['username']))
         $result1 = mysqli_query($conn, $query1);
         echo "<tr align='center'>";
         echo "<td width='600'>" . $i .  "</td> ";
-        echo "<td width='600' align='center'>" . $row["pname"] . "</td>";
+        echo "<td width='600' align='center'>" . $row["name"] . "</td>";
         echo "<td>" . $row["amount"] .  " ชิ้น</td> ";
         echo "<td width='600'> &nbsp; &nbsp; &nbsp; &nbsp;" . number_format($row["price"], 2) .  " บาท</td> ";
         
@@ -90,7 +90,7 @@ if(!empty($_SESSION['username']))
 }
 ?>
 <tr>
-<td><a href="product_menu.php">กลับหน้ารายการสินค้า</a></td>
+<td><a href="history.php">กลับหน้ารายการสินค้า</a></td>
 <td colspan="4" align="right">
 	
 	<input type='hidden' name='id_product' value='<?=$row['id_product']?>'>
