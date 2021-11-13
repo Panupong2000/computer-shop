@@ -90,7 +90,7 @@ if(!empty($_SESSION['username']))
 }
 ?>
 <tr>
-<td><a href="product_menu.php">กลับหน้ารายการสินค้า</a></td>
+<td><a href="history.php">กลับหน้ารายการสินค้า</a></td>
 <td colspan="4" align="right">
 	
 	<input type='hidden' name='id_product' value='<?=$row['id_product']?>'>
