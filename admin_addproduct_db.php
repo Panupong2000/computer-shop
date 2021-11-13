@@ -9,8 +9,8 @@
     $id = $_POST["pid"];
 
     
-		$sql = "UPDATE product SET pname='$pname' , price='$price' , Amount='$amount' , 
-            imgpro='$imgpro' , detail_product='$detail' , Id_cate = '$cate' where id_product ='$id'";
+		$sql = "INSERT INTO `product`(`pname`, `price`, `Amount`, `imgpro`, `detail_product`, `Id_cate`) 
+          VALUES ('$pname','$price','$amount',' $imgpro',' $detail','$cate')";
 		$query = mysqli_query($conn, $sql);
 
     header("location: admin_product.php")

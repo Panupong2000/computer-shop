@@ -42,7 +42,7 @@
 
 </header>
 
-<form style="padding-top: 100px;" action="edit_productd_db.php" method="psot">
+<form style="padding-top: 100px;" action="edit_productd_db.php" method="post">
     <h1>แก้ไขสินค้า</h1>
     <input type="hidden" name="pid" value="<?=$id?>">
     ชื่อสินค้า: <input type="text" name="pname"><br>
