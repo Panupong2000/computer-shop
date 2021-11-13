@@ -43,34 +43,6 @@
 
 </header>
 
-<section>
-
-<form style="padding-top: 100px;" action="admin_addproduct_db.php" method="post">
-    <h1>ฟอร์มเพิ่มสินค้า</h1><br>
-    ชื่อสินค้า: <input type="text" name="pname"><br>
-    ราคาสินค้า : <input type="number" name="price"><br>
-    จำนวน : <input type="number" name="amount"><br>
-    ชื่อรูป : <input type="text" name="imgpro"><br>
-    
-    <select name="cate">
-        <?php
-            $sql = "select * from category ";
-            $query = mysqli_query($conn, $sql);
-            echo "<option value='' selected='selected'>เลือกหมวดหมู่</option>";
-            while ($row = mysqli_fetch_array($query)){
-            echo "<option value=".$row['Id_cate'].">".$row['cate_name']."</option>";
-
-            }
-        ?>
-    </select>
-    <br>
-    รายละเอียดสินค้า: <br>
-    <textarea name="detail" row="3" cols="40"></textarea><br>
-    <input type="submit" value="เพิ่มสินค้า">
-    
-</form>
-
-</section>
 
 <section>
 <table width="600" border="0" align="center" class="square" style="padding-top:100px">
@@ -80,39 +52,37 @@
       <b>ตะกร้าสินค้า</span></td>
     </tr>
     <tr>
-	  <td align="center" bgcolor="#EAEAEA" width='200' >รูป</td>
-      <td bgcolor="#EAEAEA" width='200'>สินค้า</td>
-      <td align="center" bgcolor="#EAEAEA" width='200'>ราคา</td>
-      <td align="center" bgcolor="#EAEAEA" width='200'>จำนวน</td>
-      <td align="center" bgcolor="#EAEAEA" width='200'>รายละเอียด</td>
-      <td align="center" bgcolor="#EAEAEA" width='200'>หมวดหมู่</td>
+	  <td align="center" bgcolor="#EAEAEA" width='200' >ชื่อผู้ใช้</td>
+      <td bgcolor="#EAEAEA" width='200'>รหัสผ่าน</td>
+      <td align="center" bgcolor="#EAEAEA" width='200'>ชื่อ</td>
+      <td align="center" bgcolor="#EAEAEA" width='200'>นามสกุล</td>
+      <td align="center" bgcolor="#EAEAEA" width='200'>เบอร์</td>
+      <td align="center" bgcolor="#EAEAEA" width='400'>อีเมลล์</td>
       <td align="center" bgcolor="#EAEAEA" width='200'>ลบ</td>
-      <td align="center" bgcolor="#EAEAEA" width='200'>แก้ไข</td>
     </tr>
  <?php
 
 	include("connect.php");
     if(isset($_GET['del'])){
         $id = $_GET['id'];
-        $sql2 = "DELETE FROM product WHERE id_product=$id";
+        $sql2 = "DELETE FROM user WHERE id_user=$id";
 		$query2 = mysqli_query($conn, $sql2);
     }
 
 
-		$sql = "SELECT id_product , imgpro , pname , price , Amount , detail_product , category.cate_name as catename FROM product JOIN category ON product.Id_cate=category.Id_cate";
+		$sql = "SELECT * FROM `user`";
 		$query = mysqli_query($conn, $sql);
 
 		while ($row = mysqli_fetch_array($query)){
 		echo "<tr>";
-		echo "<td '><img src='images/" . $row["imgpro"] . "'width='150' height='150'></td>";
-		echo "<td >" . $row["pname"] . "</td>";
-		echo "<td  align='right'>" .$row["price"] . "</td>";
-		echo "<td  align='right'> ".$row["Amount"] ."</td>";
-		echo "<td  align='right'>".$row["detail_product"] ."</td>";
-        echo "<td  align='right'>".$row["catename"] ."</td>";
+        echo "<td >" . $row["username"] . "</td>";
+		echo "<td >" . $row["password"] . "</td>";
+		echo "<td  align='right'>" .$row["name"] . "</td>";
+		echo "<td  align='right'> ".$row["Lname"] ."</td>";
+		echo "<td  align='right'>".$row["phone"] ."</td>";
+        echo "<td  align='right'>".$row["email"] ."</td>";
 		//remove product
-		echo "<td ' align='center'><a href='admin_product.php?del=del&id=" .$row["id_product"] . "'>ลบ</a></td>";
-        echo "<td  align='center'><a href='edit_product.php?id=" .$row["id_product"] . "'>แก้ไข</a></td>";
+		echo "<td ' align='center'><a href='admin_user.php?del=del&id=" .$row["id_user"] . "'>ลบ</a></td>";
 		echo "</tr>";
         }
 
