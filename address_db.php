@@ -49,7 +49,8 @@ $sql	= "INSERT INTO `address`( `address`, `country`, `state`, `city`, `zipcode`,
         
 		$query	= mysqli_query($conn, $sql);
 
-     header("location:address.php");
+        echo "<script type='text/javascript'>alert('เพิ่มที่อยู่เสร็จสิ้นแล้ว');</script>";
+        header("location:address.php");
     
 
 ?>

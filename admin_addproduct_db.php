@@ -6,7 +6,6 @@
     $imgpro = $_POST["imgpro"];
     $cate = $_POST["cate"];
     $detail = $_POST["detail"];
-    $id = $_POST["pid"];
 
     
 		$sql = "INSERT INTO `product`(`pname`, `price`, `Amount`, `imgpro`, `detail_product`, `Id_cate`) 
