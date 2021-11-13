@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include("connect.php");
 
 if (isset($_POST['submit'])){
@@ -37,12 +38,18 @@ foreach($decoded_city as $values){
     }
 }
 
-$sql	= "INSERT INTO `address`( `address`, `country`, `state`, `city`, `zipcode`)
- VALUES ('$address','$name_country','$name_state','$name_city','$zipcode')";
-        
-		$query4	= mysqli_query($conn, $sql);
+$username = $_SESSION['username'];
+$sql1 = "SELECT * FROM user where username ='$username'";
+    $query1 = mysqli_query($conn, $sql1);
+	$row5 = mysqli_fetch_array($query1);
+	$id_user = $row5["id_user"];
 
-    header('address.php');
+$sql	= "INSERT INTO `address`( `address`, `country`, `state`, `city`, `zipcode`,`id_user`)
+            VALUES ('$address','$name_country','$name_state','$name_city','$zipcode','$id_user')";
+        
+		$query	= mysqli_query($conn, $sql);
+
+     header("location:address.php");
     
 
 ?>
