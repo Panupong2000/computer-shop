@@ -8,6 +8,27 @@
         unset($_SESSION['user_id']);
         header('location: index.php');
     }
+    if (isset($_GET['act'])){
+		if (isset($_GET['id_product'])){
+			$p_id = $_GET['id_product'];
+		}
+	$act = $_GET['act'];
+
+	if($act=='remove' && !empty($p_id))  //ยกเลิกการสั่งซื้อ
+	{
+		unset($_SESSION['cart'][$p_id]);
+	}
+
+	if($act=='update')
+	{
+		$amount_array = $_POST['amount'];
+		foreach($amount_array as $p_id=>$amount)
+		{
+			$_SESSION['cart'][$p_id]=$amount;
+		}
+	}
+
+	 }
 
 ?>
 <!DOCTYPE html>
