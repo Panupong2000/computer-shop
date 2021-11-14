@@ -6,10 +6,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Confirm</title>
 </head>
 <body>
-<!--สร้างตัวแปรสำหรับบันทึกการสั่งซื้อ -->
 <?php
 if(empty($_SESSION['username'])){
 	echo "<script>alert('โปรดลงทะเบียนก่อน')</script>";
@@ -34,15 +32,18 @@ $sum=0;
 	$sql5 = "SELECT * FROM user where username ='$username'";
     $query5 = mysqli_query($conn, $sql5);
 	$row5 = mysqli_fetch_array($query5);
-
-	//บันทึกการสั่งซื้อลงใน order
 	$id_user = $row5["id_user"];
-	$sql1	= "INSERT INTO `orders`(`order_date`, `totalprice`, `amount`, `id_user`) 
-                 VALUES ( '$dttm','$total','$total_qty','$id_user')";
+
+	$sql6 = "SELECT * FROM address where id_user ='$id_user'";
+    $query6 = mysqli_query($conn, $sql6);
+	$row6 = mysqli_fetch_array($query6);
+	$id_address = $row6["id_address"];
+
+	$sql1	= "INSERT INTO `orders`(`order_date`, `totalprice`, `amount`, `id_user`,`id_address`) 
+                 VALUES ( '$dttm','$total','$total_qty','$id_user','$id_address')";
     
 	$query1	= mysqli_query($conn, $sql1);
 
-	//ฟังก์ชั่น MAX() จะคืนค่าที่มากที่สุดในคอลัมน์ที่ระบุ ออกมา หรือจะพูดง่ายๆก็ว่า ใช้สำหรับหาค่าที่มากที่สุด นั่นเอง.
 	$sql2 = "select max(ID_Orders) as ID_Orders from orders ";
 	$query2	= mysqli_query($conn, $sql2);
 	$row2 = mysqli_fetch_array($query2);
@@ -53,7 +54,7 @@ $sum=0;
     echo "$dttm"."<br>";
     echo "$o_id"."<br>";
     echo "$total"."<br>";
-//PHP foreach() เป็นคำสั่งเพื่อนำข้อมูลออกมาจากตัวแปลที่เป็นประเภท array โดยสามารถเรียกค่าได้ทั้ง $key และ $value ของ array
+
 	foreach($_SESSION['cart'] as $p_id=>$qty)
 	{
 		$sql3	= "select * from product where id_product=$p_id";
@@ -83,11 +84,6 @@ $sum=0;
 	}
     
 ?>
-<script type="text/javascript">
-	alert("<?php echo $msg;?>");
-	window.location ='product_menu.php';
-</script>
- 
 
 
 
