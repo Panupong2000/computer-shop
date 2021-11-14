@@ -22,6 +22,8 @@
 <body>
     <?php
 
+
+
     $username = $_SESSION['username'];
 	$sql = "SELECT * FROM user where username ='$username'";
     $query = mysqli_query($conn, $sql);
@@ -30,12 +32,12 @@
 
     $sql2 = "SELECT * FROM address where id_user ='$id_user'";
     $query2 = mysqli_query($conn, $sql2);
-    ?>
-    <?php if (!empty(mysqli_fetch_array($query2))) { ?>
-             <section style="text-align: center;"> <h1>ที่อยู่</h1></section>
-        <?php }else{ ?>
+    $row2 = mysqli_fetch_array($query2);
 
-    <br /><br />
+    ?>
+    <?php if (empty($row2)) { ?>
+
+        <br /><br />
     <div class="container" style="width:600px;">
 
     <form action="address_db.php" method="post">
@@ -62,6 +64,18 @@
    <button type="submit"  name="submit">Summit</button>
    </form>
     </div>
+
+        <?php }else{ ?>
+
+            <section style="text-align: center;"> <h1>ที่อยู่</h1></section>
+                <p>ที่อยู่: <?= $row2["address"]?></p>
+                <p>จังหวัด: <?= $row2["country"]?></p>
+                <p>เขต/อำเภอ: <?= $row2["state"]?></p>
+                <p>แขวง/ตำบล: <?= $row2["city"]?></p>
+                <p>รหัสไปรษณีย์: <?= $row2["zipcode"]?></p>
+                <a href="address_del.php?id=<?= $row2["id_address"]?>">ลบที่อยู่</a>
+
+
         
     <?php }?>
 

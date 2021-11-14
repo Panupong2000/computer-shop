@@ -151,13 +151,7 @@
             <span class="price">$100 - $200</span>
             <img src="images/pws1.png" alt="">
             <h3>pws</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-            </div>
+            
             <a href="#" class="btn">order now</a>
         </div>
 
@@ -165,13 +159,6 @@
             <span class="price">$100 - $200</span>
             <img src="images/case1.png" alt="">
             <h3>case</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-            </div>
             <a href="#" class="btn">order now</a>
         </div>
 
