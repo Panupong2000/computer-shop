@@ -54,6 +54,8 @@
       <td align="center" bgcolor="#EAEAEA">หมวดหมู่</td>
       <td align="center" bgcolor="#EAEAEA">ลบ</td>
       <td align="center" bgcolor="#EAEAEA">แก้ไข</td>
+      <td align="center" bgcolor="#EAEAEA">เพิ่ม</td>
+
     </tr>
  <?php
 
