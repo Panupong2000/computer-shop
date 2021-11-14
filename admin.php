@@ -40,6 +40,16 @@
     <div id="menu-bar" class="fas fa-bars"></div>
 
 </header>
+
+<form style="padding-top: 100px;" action="admin_addcate.php" method="post">
+    <h1>ฟอร์มเพิ่มสินค้า</h1><br>
+    ประเภทสินค้า: <input type="text" name="cate_name"><br>
+    ชื่อรูป : <input type="text" name="img_cate"><br>
+    
+    <input type="submit" value="เพิ่มสินค้า">
+    
+</form>
+
 <table width="600" border="0" align="center" class="square" style="padding-top:100px">
     <tr>
       <td colspan="5" bgcolor="#CCCCCC">
@@ -49,7 +59,6 @@
       <td align="center" bgcolor="#EAEAEA">cate_name</td>
       <td align="center" bgcolor="#EAEAEA">img_cate</td>
       <td align="center" bgcolor="#EAEAEA">ลบ</td>
-      <td align="center" bgcolor="#EAEAEA">เพิ่มสินค้า</td>
       
     </tr>
  <?php
@@ -71,8 +80,6 @@
         echo "<td '><img src='images/" . $row["img_cate"] . "'width='150' height='150'></td>";
         //remove product
         echo "<td width='46' align='center'><a href='admin.php?del=del&id=" .$row["Id_cate"] . "'>ลบ</a></td>";
-
-        echo "<td width='46' align='center'><a href='admin.php?del=del&id=" .$row["Id_cate"] . "' < style='text-align=center;'>เพิ่ม</a></td>";
         echo "</tr>";
 
         }
