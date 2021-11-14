@@ -82,7 +82,7 @@ if(!empty($_SESSION['username']))
 		echo "<td width='1200' align='center'>" . $row["status"] . "</td>";
 		 
 		
-		echo "</tr>";
+    echo "</tr>";
 }
 }
 ?>
