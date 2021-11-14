@@ -59,6 +59,11 @@
       <td align="center" bgcolor="#EAEAEA">รายละเอียด</td>
 	  <td align="center" bgcolor="#EAEAEA">จำนวน</td>
 	   <td align="center" bgcolor="#EAEAEA">สถานะการสั่งซื้อ</td>
+     <td align="center" bgcolor="#EAEAEA"></td>
+     <td align="center" bgcolor="#EAEAEA">ปุ่มยืนยัน</td>
+     <td align="center" bgcolor="#EAEAEA">ปุ่มยกเลิก</td>
+     
+
      
     </tr>
 <?php
@@ -68,7 +73,7 @@ if(!empty($_SESSION['username']))
 
     $username=$_SESSION["username"];
 
-		$sql = "SELECT * FROM orders JOIN user ON orders.id_user=user.id_user where user.username ='$username'";
+		$sql = "SELECT * FROM orders ";
     $query = mysqli_query($conn, $sql);
 
 		while ($row = mysqli_fetch_array($query)){
@@ -81,10 +86,10 @@ if(!empty($_SESSION['username']))
 		echo "<td width='1200' align='center'>" ."<a href='history_detail.php?ID=$row[0]' >".'รายละเอียดออเดอร์'."</td>";
 		echo "<td width='334' align='center'>" . $row["amount"] . "</td>";
         echo "<td width='20000' align='center'>" . $row["status"] . "</td>";
-		echo "<td width='20000' align='center' >" . "<a href='history_detail.php?ID=$row[0]' >" . '<i class="bi bi-clipboard-data " style="color : #529714;font-size: 25px;"></i>' .  "</td> ";
+		
         echo "<td width='20000' align='center'>";
                 if ($row["status"] == "รอดำเนินการ") {
-        echo "<a><span role='status' ></span>กำลังดำเนินการ</a>";
+        
                 } else if ($row["status"] == "cancel") {
         echo "<a>ยกเลิกแล้ว</a>";
                 } else {
@@ -93,7 +98,9 @@ if(!empty($_SESSION['username']))
         echo "</td>";
         echo "<td width='20000' align='center'>";
                 if ($row["status"] == "รอดำเนินการ") {
-        echo "<a href='admin_submit1.php?ID_Orders=$row[0]' onclick=\"return confirm('ยืนยันการยอมรับ... !!!')\"  >ยอมรับออเดอร์</a>";
+        echo "<a href='admin_submit1.php?ID_Orders=$row[0]' onclick=\"return confirm('ยืนยันการยอมรับ... !!!')\"  >ยอมรับออเดอร์</a>";}
+        echo "<td width='20000' align='center'>";
+                if ($row["status"] == "รอดำเนินการ") {
         echo "<a href='admin_submit2.php?ID_Orders=$row[0]' onclick=\"return confirm('ยืนยันการยกเลิก... !!!')\"  >ยกเลิกออเดอร์</a>";}
 		 
 		

@@ -66,28 +66,50 @@ if(!empty($_SESSION['username']))
 {
 	include("connect.php");
     $id = $_GET["ID"];
-    $query = "SELECT * FROM detail WHERE id_order = '$id'" or die("Error:" . mysqli_error($con));
+    $username=$_SESSION["username"];
+    $query = "SELECT * FROM detail WHERE id_order = '$id'" ;
     $result = mysqli_query($conn, $query);
-    $i = 1; 
+    $query2 = "SELECT * FROM orders WHERE ID_Orders = '$id'" ;
+    $result2 = mysqli_query($conn, $query2);
+
+    $i = 1;
 
 
-     while ($row = mysqli_fetch_array($result)) {
-        $id_product = $row["id_product"];
-        $query1 = "SELECT * FROM product where id_product ='$id_product'";
-        $result1 = mysqli_query($conn, $query1);
-        echo "<tr align='center'>";
-        echo "<td width='600'>" . $i .  "</td> ";
-        echo "<td width='600' align='center'>" . $row["name"] . "</td>";
-        echo "<td>" . $row["amount"] .  " ชิ้น</td> ";
-        echo "<td width='600'> &nbsp; &nbsp; &nbsp; &nbsp;" . number_format($row["price"], 2) .  " บาท</td> ";
-        
-        echo "</tr>";
-        $i++;
-      }
-      mysqli_close($conn);
-      
-    
+    while ($row = mysqli_fetch_array($result)) {
+
+
+      echo "<tr align='center'>";
+      echo "<td width='600'>" . $i .  "</td> ";
+      echo "<td width='600' align='center'>" . $row["name"] . "</td>";
+      echo "<td>" . $row["amount"] .  " ชิ้น</td> ";
+      echo "<td width='600'> &nbsp; &nbsp; &nbsp; &nbsp;" . number_format($row["price"], 2) .  " บาท</td> ";
+
+
+      echo "</tr>";
+
+      $i++;
+    }
+
+      $row1 = mysqli_fetch_array($result2);
+      $id_user = $row1["id_user"];
+      $id_address = $row1["id_address"];
+      $query3 = "SELECT * FROM user where id_user = '$id_user'";
+      $query4 = "SELECT * FROM address where id_address = '$id_address'";
+      $result3 = mysqli_query($conn, $query3);
+      $row3 = mysqli_fetch_array($result3);
+      $result4 = mysqli_query($conn, $query4);
+      $row4 = mysqli_fetch_array($result4);
+
+
+
+
+
+
+
 }
+
+    
+
 ?>
 <tr>
 <td><a href="product_menu.php">กลับหน้ารายการสินค้า</a></td>
@@ -98,6 +120,12 @@ if(!empty($_SESSION['username']))
 </td>
 </tr>
 </table>
+<p> <?=$row3["name"]?> </p>
+<p> <?=$row4["address"]?> </p>
+<p> <?=$row4["country"]?> </p>
+<p> <?=$row4["state"]?> </p>
+<p> <?=$row4["city"]?> </p>
+<p> <?=$row4["zipcode"]?> </p>
 </form>
 </section>
 </body>

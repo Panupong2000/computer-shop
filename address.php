@@ -15,11 +15,34 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/style_address.css" /> 
+    <link rel="stylesheet" href="style_address.css"> 
 
 </head>
 
 <body>
+<header>
+    <a href="#" class="logo"><i class="fas fa-ytensils"></i>commm</a>
+
+    <div id="menu-bar" class="fas fa-bars"></div> 
+    <nav class="navbar">
+        <a href="index.php">หน้าหลัก</a>
+        <a href="product_menu.php">สินค้า</a>
+        <a href="cart.php">ตระกร้าสินค้า</a>
+        <a href="history.php">ประวัติการสั่งซื้อ</a>
+        <a href="address.php">ที่อยู่</a>
+        <?php if (!isset($_SESSION['username'])) : ?>
+        <a href="login.php">เข้าสู่ระบบ</a>
+        <?php endif ?>
+        <?php if (isset($_SESSION['username'])) : ?>
+             <a> <strong><?php echo $_SESSION['username']; ?></strong></a>
+             <a href="index.php?logout='1'" style="color: red;">Logout</a>
+        <?php endif ?>
+
+    </nav>
+    
+    <div id="menu-bar" class="fas fa-bars"></div>
+
+</header>
     <?php
 
 
@@ -46,7 +69,7 @@
         <input name="address" id="address" class="form-control input-lg">
         <br>
         <select name="country" id="country" class="form-control input-lg">
-    <option  value="">เลือก จังหวัด</option>
+        <option  value="">เลือก จังหวัด</option>
    </select>
         <br />
         <select name="state" id="state" class="form-control input-lg">
@@ -67,13 +90,14 @@
 
         <?php }else{ ?>
 
-            <section style="text-align: center;"> <h1>ที่อยู่</h1></section>
+            <section style="text-align: center;" id="section"> <h1>ที่อยู่</h1></section>
                 <p>ที่อยู่: <?= $row2["address"]?></p>
                 <p>จังหวัด: <?= $row2["country"]?></p>
                 <p>เขต/อำเภอ: <?= $row2["state"]?></p>
                 <p>แขวง/ตำบล: <?= $row2["city"]?></p>
                 <p>รหัสไปรษณีย์: <?= $row2["zipcode"]?></p>
-                <a href="address_del.php?id=<?= $row2["id_address"]?>">ลบที่อยู่</a>
+                <p><a href="address_del.php?id=<?= $row2["id_address"]?>">ลบที่อยู่</a></p>
+                
 
 
         
