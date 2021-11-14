@@ -31,8 +31,8 @@
     <div id="menu-bar" class="fas fa-bars"></div>
 
     <nav class="navbar">
-        <a href="">หมวดหมู่</a>
-        <a href="">สินค้า</a>
+        <a href="admin.php">หมวดหมู่</a>
+        <a href="admin_product.php">สินค้า</a>
         <a href="">ออเดอร์</a>
         <a href="">ผู้ใช้</a>
         <a href="admin.php?logout='1'" style="color: red;">logout</a>

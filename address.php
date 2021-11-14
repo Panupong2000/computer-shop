@@ -1,8 +1,18 @@
+<?php 
+
+    session_start();
+    include("connect.php");  
+    
+    if (isset($_GET['logout'])) {
+        unset($_SESSION['username']);
+        unset($_SESSION['user_id']);
+        header('location: index.php');
+    }
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Webslesson Tutorial | JSON - Dynamic Dependent Dropdown List using Jquery and Ajax</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/style_address.css" /> 
@@ -10,12 +20,24 @@
 </head>
 
 <body>
+    <?php
 
+    $username = $_SESSION['username'];
+	$sql = "SELECT * FROM user where username ='$username'";
+    $query = mysqli_query($conn, $sql);
+	$row = mysqli_fetch_array($query);
+	$id_user = $row["id_user"];
 
+    $sql2 = "SELECT * FROM address where id_user ='$id_user'";
+    $query2 = mysqli_query($conn, $sql2);
+    ?>
+    <?php if (!empty(mysqli_fetch_array($query2))) { ?>
+             <section style="text-align: center;"> <h1>ที่อยู่</h1></section>
+        <?php }else{ ?>
 
     <br /><br />
-    if()
     <div class="container" style="width:600px;">
+
     <form action="address_db.php" method="post">
         <h2 align="center">ที่อยู่ จัดส่ง</h2><br /><br />
         ที่อยู่:
@@ -40,6 +62,10 @@
    <button type="submit"  name="submit">Summit</button>
    </form>
     </div>
+        
+    <?php }?>
+
+
 </body>
 
 </html>

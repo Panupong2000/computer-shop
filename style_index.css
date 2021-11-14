@@ -17,7 +17,7 @@
 
 *::selection {
     background: var(--red);
-    color: #fff;
+    color: yellow;
 }
 
 html {
@@ -104,6 +104,10 @@ header .logo {
 header .logo i {
     padding-right: .5rem;
     color: var(--red);
+}
+
+.logo:hover {
+    color: #ff3838;
 }
 
 header .navbar a {

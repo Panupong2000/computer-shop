@@ -11,7 +11,10 @@
 <body>
 <!--สร้างตัวแปรสำหรับบันทึกการสั่งซื้อ -->
 <?php
-
+if(empty($_SESSION['username'])){
+	echo "<script>alert('โปรดลงทะเบียนก่อน')</script>";
+	header("location : login.php");
+}
 $total=0;
 $total_qty=0;
 $sum=0;
@@ -27,9 +30,15 @@ $sum=0;
 
 	$dttm = Date("Y-m-d G:i:s");
 
+	$username = $_SESSION['username'];
+	$sql5 = "SELECT * FROM user where username ='$username'";
+    $query5 = mysqli_query($conn, $sql5);
+	$row5 = mysqli_fetch_array($query5);
+
 	//บันทึกการสั่งซื้อลงใน order
+	$id_user = $row5["id_user"];
 	$sql1	= "INSERT INTO `orders`(`order_date`, `totalprice`, `amount`, `id_user`) 
-                 VALUES ( '$dttm','$total','$total_qty','1')";
+                 VALUES ( '$dttm','$total','$total_qty','$id_user')";
     
 	$query1	= mysqli_query($conn, $sql1);
 
@@ -50,10 +59,11 @@ $sum=0;
 		$sql3	= "select * from product where id_product=$p_id";
 		$query3	= mysqli_query($conn, $sql3);
 		$row3	= mysqli_fetch_array($query3);
+		$pname = $row3['pname'];
 		$total1	= $row3['price']*$qty;
         echo "  ";
 		
-		$sql4	= "INSERT INTO `detail`(`price`, `amount`, `id_product`, `id_order`) VALUES ('$total1','$qty','$p_id','$o_id')";
+		$sql4	= "INSERT INTO `detail`(`price`, `amount`,`name`, `id_product`, `id_order`) VALUES ('$total1','$qty','$pname','$p_id','$o_id')";
         
 		$query4	= mysqli_query($conn, $sql4);
 	}

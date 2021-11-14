@@ -50,39 +50,39 @@
   <table width="600" border="0" align="center" class="square">
     <tr>
       <td colspan="5" bgcolor="#CCCCCC">
-      <b>ตะกร้าสินค้า</span></td>
+      <b>ประวัติการสั่งซื้อ</span></td>
     </tr>
     <tr>
 	 
+      <td align="center" bgcolor="#EAEAEA">เวลา</td>
       <td align="center" bgcolor="#EAEAEA">ราคา</td>
-      <td align="center" bgcolor="#EAEAEA">จำนวน</td>
-      <td align="center" bgcolor="#EAEAEA">รวม(บาท)</td>
-      <td align="center" bgcolor="#EAEAEA">ลบ</td>
+      <td align="center" bgcolor="#EAEAEA">รายละเอียด</td>
+	  <td align="center" bgcolor="#EAEAEA">จำนวน</td>
+	   <td align="center" bgcolor="#EAEAEA">สถานะการสั่งซื้อ</td>
+     
     </tr>
 <?php
-$total=0;
-if(!empty($_SESSION['user_id']))
+if(!empty($_SESSION['username']))
 {
 	include("connect.php");
-		
-		$idd=["user_id"];
-		$sql = "SELECT * FROM orders where id_user ='$idd'";
-		$query = mysqli_query($conn, $sql);
-		while($row = mysqli_fetch_array($query)){
 
-		
+    $username=$_SESSION["username"];
+
+		$sql = "SELECT * FROM orders JOIN user ON orders.id_user=user.id_user where user.username ='$username'";
+    $query = mysqli_query($conn, $sql);
+
+		while ($row = mysqli_fetch_array($query)){
 		
 		echo "<tr>";
-		echo "<td width='300'>" . $row["order_date"] . "></td>";
-		echo "<td width='334'>" . $row["totalprice"] . "</td>";
-		echo "<td width='46' align='right'>" . $row["status"] . "</td>";
-		echo "<td width='57' align='right'></td>";  
-		
-		
-		
+		echo "<td width='1200' align='center'>" . $row["order_date"] . "></td>";
+		echo "<td width='334' align='center'>" . $row["totalprice"] . "</td>";
+		// echo "<td width='800' align='center'>รายละเอียดออเดอร์</td>";
+		echo "<td width='1200' align='center'>" ."<a href='history_detail.php?ID=$row[0]' >".'รายละเอียดออเดอร์'."</td>";
+		echo "<td width='334' align='center'>" . $row["amount"] . "</td>";
+		echo "<td width='1200' align='center'>" . $row["status"] . "</td>";
+		 
 		
 		echo "</tr>";
-	
 }
 }
 ?>
