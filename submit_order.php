@@ -49,12 +49,6 @@ $sum=0;
 	$row2 = mysqli_fetch_array($query2);
 	$o_id = $row2["ID_Orders"];
 
-    echo "$sum"."<br>";
-    echo "$total_qty"."<br>";
-    echo "$dttm"."<br>";
-    echo "$o_id"."<br>";
-    echo "$total"."<br>";
-
 	foreach($_SESSION['cart'] as $p_id=>$qty)
 	{
 		$sql3	= "select * from product where id_product=$p_id";
@@ -84,6 +78,12 @@ $sum=0;
 	}
     
 ?>
+
+<script type="text/javascript">
+	alert("<?php echo $msg;?>");
+	window.location ='product_menu.php';
+</script>
+ 
 
 
 
