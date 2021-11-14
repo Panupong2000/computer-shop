@@ -109,15 +109,14 @@ header .navbar a {
 }
 
 #menu-bar {
-  font-size: 3rem;
-  cursor: pointer;
-  background-color: #24252A;
-  border: .1rem solid #24252A;
-  border-radius: .3rem;
-  padding: .2rem 1.5rem;
-  display: none;
+    font-size: 3rem;
+    cursor: pointer;
+    background-color: #24252A;
+    border: .1rem solid #24252A;
+    border-radius: .3rem;
+    padding: .2rem 1.5rem;
+    display: none;
 }
-
 
 .vertical-menu {
     width: 250px;
@@ -217,5 +216,3 @@ header .navbar a {
 .namepro {
     height: 50px;
 }
-
-

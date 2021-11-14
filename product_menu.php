@@ -3,7 +3,6 @@
 session_start();
 include "connect.php" ;
 
-
 if (isset($_POST['add'])){
     $p_id = $_POST['product_id'];
     if(isset($_SESSION['cart'][$p_id]))
@@ -100,13 +99,10 @@ if (isset($_POST['add'])){
                     <span><?=$row ["pname"]?></span>
                     </div>
                     <div>
-
-                    </div>
-                    <div>
                     <span><?=number_format($row ["price"])?></span>
                     </div>
                     <div>
-                    <button type="submit"  name="add">Add to Cart</button>
+                    <button class="btn" type="submit"  name="add">Add to Cart</button>
                     <input type='hidden' name='product_id' value='<?=$row['id_product']?>'>
                     </div>
                 </div>
