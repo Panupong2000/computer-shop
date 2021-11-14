@@ -33,29 +33,61 @@
     <nav class="navbar">
         <a href="admin.php">หมวดหมู่</a>
         <a href="admin_product.php">สินค้า</a>
-        <a href="">ออเดอร์</a>
-        <a href="">ผู้ใช้</a>
-        <a href="admin.php?logout='1'" style="color: red;">logout</a>
-    </nav>
+        <a href="admin_submit.php">ออเดอร์</a>
+        <a href="admin_user.php">ผู้ใช้</a>
+        <?php if (isset($_SESSION['username'])) : ?>
+             <a> <strong><?php echo $_SESSION['username']; ?></strong></a>
+             <a href="index.php?logout='1'" style="color: red;">Logout</a>
+        <?php endif ?>
     <div id="menu-bar" class="fas fa-bars"></div>
 
 </header>
+
+<section>
+
+<form style="padding-top: 100px;" action="admin_addproduct_db.php" method="post">
+    <h1>ฟอร์มเพิ่มสินค้า</h1><br>
+    ชื่อสินค้า: <input type="text" name="pname"><br>
+    ราคาสินค้า : <input type="number" name="price"><br>
+    จำนวน : <input type="number" name="amount"><br>
+    ชื่อรูป : <input type="text" name="imgpro"><br>
+    
+    <select name="cate">
+        <?php
+            $sql = "select * from category ";
+            $query = mysqli_query($conn, $sql);
+            echo "<option value='' selected='selected'>เลือกหมวดหมู่</option>";
+            while ($row = mysqli_fetch_array($query)){
+            echo "<option value=".$row['Id_cate'].">".$row['cate_name']."</option>";
+
+            }
+        ?>
+    </select>
+    <br>
+    รายละเอียดสินค้า: <br>
+    <textarea name="detail" row="3" cols="40"></textarea><br>
+    <input type="submit" value="เพิ่มสินค้า">
+    
+</form>
+
+</section>
+
+<section>
 <table width="600" border="0" align="center" class="square" style="padding-top:100px">
+<h1>รายการสินค้าสินค้า</h1>
     <tr>
-      <td colspan="5" bgcolor="#CCCCCC">
+      <td colspan="8" bgcolor="#CCCCCC">
       <b>ตะกร้าสินค้า</span></td>
     </tr>
     <tr>
-	  <td align="center" bgcolor="#EAEAEA">รูป</td>
-      <td bgcolor="#EAEAEA">สินค้า</td>
-      <td align="center" bgcolor="#EAEAEA">ราคา</td>
-      <td align="center" bgcolor="#EAEAEA">จำนวน</td>
-      <td align="center" bgcolor="#EAEAEA">รายละเอียด</td>
-      <td align="center" bgcolor="#EAEAEA">หมวดหมู่</td>
-      <td align="center" bgcolor="#EAEAEA">ลบ</td>
-      <td align="center" bgcolor="#EAEAEA">แก้ไข</td>
-      <td align="center" bgcolor="#EAEAEA">เพิ่ม</td>
-
+	  <td align="center" bgcolor="#EAEAEA" width='200' >รูป</td>
+      <td bgcolor="#EAEAEA" width='200'>สินค้า</td>
+      <td align="center" bgcolor="#EAEAEA" width='200'>ราคา</td>
+      <td align="center" bgcolor="#EAEAEA" width='200'>จำนวน</td>
+      <td align="center" bgcolor="#EAEAEA" width='200'>รายละเอียด</td>
+      <td align="center" bgcolor="#EAEAEA" width='200'>หมวดหมู่</td>
+      <td align="center" bgcolor="#EAEAEA" width='200'>ลบ</td>
+      <td align="center" bgcolor="#EAEAEA" width='200'>แก้ไข</td>
     </tr>
  <?php
 
@@ -72,28 +104,22 @@
 
 		while ($row = mysqli_fetch_array($query)){
 		echo "<tr>";
-		echo "<td width='300'><img src='images/" . $row["imgpro"] . "'width='150' height='150'></td>";
-		echo "<td width='334'>" . $row["pname"] . "</td>";
-		echo "<td width='46' align='right'>" .$row["price"] . "</td>";
-		echo "<td width='57' align='right'> ".$row["Amount"] ."</td>";
-		echo "<td width='93' align='right'>".$row["detail_product"] ."</td>";
-        echo "<td width='93' align='right'>".$row["catename"] ."</td>";
+		echo "<td '><img src='images/" . $row["imgpro"] . "'width='150' height='150'></td>";
+		echo "<td >" . $row["pname"] . "</td>";
+		echo "<td  align='right'>" .$row["price"] . "</td>";
+		echo "<td  align='right'> ".$row["Amount"] ."</td>";
+		echo "<td  align='right'>".$row["detail_product"] ."</td>";
+        echo "<td  align='right'>".$row["catename"] ."</td>";
 		//remove product
-		echo "<td width='46' align='center'><a href='admin_product.php?del=del&id=" .$row["id_product"] . "'>ลบ</a></td>";
+		echo "<td ' align='center'><a href='admin_product.php?del=del&id=" .$row["id_product"] . "'>ลบ</a></td>";
+        echo "<td  align='center'><a href='edit_product.php?id=" .$row["id_product"] . "'>แก้ไข</a></td>";
 		echo "</tr>";
         }
 
 ?> 
-<tr>
-<td><a href="product_menu.php">กลับหน้ารายการสินค้า</a></td>
-<td colspan="4" align="right">
-	<input type="submit" name="button" id="button" value="ปรับปรุง" />
-	<input type='hidden' name='id_product' value='<?=$row['id_product']?>'>
-    <input type="button" name="Submit2" value="สั่งซื้อ" onclick="window.location='submit_order.php';" />
-</td>
-</tr>
 </table>
 
+</section>
 
     <!-- custom js file link -->
     <script src="script.js"></script>

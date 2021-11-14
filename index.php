@@ -9,6 +9,24 @@
         header('location: index.php');
     }
 
+    if (isset($_POST['add'])){
+        $p_id = $_POST['product_id'];
+        if(isset($_SESSION['cart'][$p_id]))
+            {
+                
+                $_SESSION['cart'][$p_id]++;
+                
+            }
+            else
+            {
+               
+                $_SESSION['cart'][$p_id]=1;
+            }
+            
+            echo "<script>alert('เพิ่มสินค้าลงในตระกร้าแล้ว')</script>";
+       
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,17 +41,10 @@
 </head>
 <body>
 
-<!-- header section starts -->
-
 <header>
     <a href="#" class="logo"><i class="fas fa-ytensils"></i>commm</a>
 
-    <div id="menu-bar" class="fas fa-bars"></div>
-
-
-  
-
-    
+    <div id="menu-bar" class="fas fa-bars"></div> 
     <nav class="navbar">
         <a href="product_menu.php">สินค้า</a>
         <a href="cart.php">ตระกร้าสินค้า</a>
@@ -46,9 +57,6 @@
              <a> <strong><?php echo $_SESSION['username']; ?></strong></a>
              <a href="index.php?logout='1'" style="color: red;">Logout</a>
         <?php endif ?>
-        
-            
-            
 
     </nav>
     
@@ -56,19 +64,12 @@
 
 </header>
 
-
-<!-- header section ends -->
-
-
-
-<!-- home section starts -->
-
 <section class="home" id="home">
 
     <div class="content">
         <h1>commm</h1>
         <p>ขายคอม</p>
-        <a href="#" class="btn">order now</a>
+        <a href="product_menu.php" class="btn">order now</a>
     </div>
 
     <div class="image">
@@ -78,110 +79,38 @@
    
 </section>    
 
-
-<!-- home section ends -->
-
-
-
-
-<!-- popular starts -->
-
 <section class="promotion" id="promotion">
 
-    <h1 class="heading">pro<span>motion</span></h1>
+    <h1 class="heading">ขาย<span>ดีที่สุด</span></h1>
     <div class="box-container">
+    <?php
 
+        $sql = "SELECT detail.id_product AS id_pro ,detail.name AS name , SUM(detail.amount) AS sum_amount ,product.price AS price ,product.imgpro AS imgpro 
+        FROM `detail` JOIN product ON detail.id_product=product.id_product 
+        GROUP BY name ORDER BY `sum_amount` DESC LIMIT 5";
+		$query = mysqli_query($conn, $sql);
+		while ($row = mysqli_fetch_array($query)){
+?>
         <div class="box">
-            <span class="price">$100 - $200</span>
-            <img src="images/cpu1.png" alt="">
-            <h3>cpu</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
+        <form action="index.php" method="post">
+        <img src='images/<?=$row["imgpro"]?>' >
+            <div>
+                <h2><span><?=$row ["name"]?></span></h2>
             </div>
-            <a href="#" class="btn">order now</a>
-        </div>
+            <div>
+            <h1><span><?=number_format($row ["price"])?></span></h1>
+            </div>
 
-        <div class="box">
-            <span class="price">$100 - $200</span>
-            <img src="images/mb1.png" alt="">
-            <h3>mainboard</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-            </div>
-            <a href="#" class="btn">order now</a>
+            <button class="btn" type="submit"  name="add">Add to Cart</button>
+            <input type='hidden' name='product_id' value='<?=$row['id_pro']?>'>
+            </form>
         </div>
-
-        <div class="box">
-            <span class="price">$100 - $200</span>
-            <img src="images/ram1.png" alt="">
-            <h3>ram</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-            </div>
-            <a href="#" class="btn">order now</a>
-        </div>
-
-        <div class="box">
-            <span class="price">$100 - $200</span>
-            <img src="images/gpu1.png" alt="">
-            <h3>gpu</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-            </div>
-            <a href="#" class="btn">order now</a>
-        </div>
-
-        <div class="box">
-            <span class="price">$100 - $200</span>
-            <img src="images/pws1.png" alt="">
-            <h3>pws</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-            </div>
-            <a href="#" class="btn">order now</a>
-        </div>
-
-        <div class="box">
-            <span class="price">$100 - $200</span>
-            <img src="images/case1.png" alt="">
-            <h3>case</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-            </div>
-            <a href="#" class="btn">order now</a>
-        </div>
+<?php } ?>
 
 
     </div>
 </section>
 
-<!-- popular ends -->
-
-<!-- steps section starts  -->
 
 <div class="step-container">
 
@@ -224,18 +153,12 @@
 
 </footer>
 
-<!-- scroll top button  -->
 <a href="#home" class="fas fa-angle-up" id="scroll-top"></a>
 
-<!-- loader  -->
 <div class="loader-container">
     <img src="images/loader.gif" alt="">
 </div>
 
-
-
-
-    <!-- custom js file link -->
     <script src="script.js"></script>
     
 </body>
