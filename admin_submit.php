@@ -19,15 +19,28 @@
 
     <div id="menu-bar" class="fas fa-bars"></div>
 
+
+  
+
+    
     <nav class="navbar">
-        <a href="admin.php">หมวดหมู่</a>
-        <a href="admin_product.php">สินค้า</a>
-        <a href="admin_submit.php">ออเดอร์</a>
-        <a href="admin_user.php">ผู้ใช้</a>
+        <a href="product_menu.php">สินค้า</a>
+        <a href="cart.php">ตระกร้าสินค้า</a>
+        <a href="history.php">ประวัติการสั่งซื้อ</a>
+        <a href="address.php">ที่อยู่</a>
+        <?php if (!isset($_SESSION['username'])) : ?>
+        <a href="login.php">เข้าสู่ระบบ</a>
+        <?php endif ?>
         <?php if (isset($_SESSION['username'])) : ?>
              <a> <strong><?php echo $_SESSION['username']; ?></strong></a>
              <a href="index.php?logout='1'" style="color: red;">Logout</a>
         <?php endif ?>
+        
+            
+            
+
+    </nav>
+    
     <div id="menu-bar" class="fas fa-bars"></div>
 
 </header>
@@ -40,7 +53,7 @@
       <b>ประวัติการสั่งซื้อ</span></td>
     </tr>
     <tr>
-	 
+      <td align="center" bgcolor="#EAEAEA">ลำดับออเดอร์</td>
       <td align="center" bgcolor="#EAEAEA">เวลา</td>
       <td align="center" bgcolor="#EAEAEA">ราคา</td>
       <td align="center" bgcolor="#EAEAEA">รายละเอียด</td>
@@ -61,6 +74,7 @@ if(!empty($_SESSION['username']))
 		while ($row = mysqli_fetch_array($query)){
 		
 		echo "<tr>";
+        echo "<td width='334' align='center'>" . $row["ID_Orders"] . "</td>";
 		echo "<td width='1200' align='center'>" . $row["order_date"] . "></td>";
 		echo "<td width='334' align='center'>" . $row["totalprice"] . "</td>";
 		// echo "<td width='800' align='center'>รายละเอียดออเดอร์</td>";
@@ -70,11 +84,11 @@ if(!empty($_SESSION['username']))
 		echo "<td width='20000' align='center' >" . "<a href='history_detail.php?ID=$row[0]' >" . '<i class="bi bi-clipboard-data " style="color : #529714;font-size: 25px;"></i>' .  "</td> ";
         echo "<td width='20000' align='center'>";
                 if ($row["status"] == "รอดำเนินการ") {
-        echo "<a href='#!'  ><span class='spinner-border spinner-border-sm' role='status' ></span>กำลังดำเนินก</a>";
+        echo "<a><span role='status' ></span>กำลังดำเนินการ</a>";
                 } else if ($row["status"] == "cancel") {
-        echo "<a href='#!' class='btn btn-danger  mt-1 mb-1'>ยกเลิกแล้ว</a>";
+        echo "<a>ยกเลิกแล้ว</a>";
                 } else {
-        echo   "<a  class='btn btn-success  mt-1 mb-1'>เสร็จสิ้นแล้ว</a>";
+        
                 }
         echo "</td>";
         echo "<td width='20000' align='center'>";
