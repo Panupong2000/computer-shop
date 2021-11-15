@@ -13,6 +13,7 @@
     text-decoration: none;
     text-transform: capitalize;
     transition: all .2s linear;
+    font-size: large;
 }
 
 *::selection {
@@ -120,4 +121,14 @@ header .navbar a {
     border-radius: .3rem;
     padding: .2rem 1.5rem;
     display: none;
+}
+
+#section {
+    font-size: large;
+    padding-top: 150px;
+    
+}
+
+p {
+    padding-left: 900px;
 }
