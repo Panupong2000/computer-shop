@@ -33,10 +33,12 @@
     <nav class="navbar">
         <a href="admin.php">หมวดหมู่</a>
         <a href="admin_product.php">สินค้า</a>
-        <a href="">ออเดอร์</a>
-        <a href="">ผู้ใช้</a>
-        <a href="admin.php?logout='1'" style="color: red;">logout</a>
-    </nav>
+        <a href="admin_submit.php">ออเดอร์</a>
+        <a href="admin_user.php">ผู้ใช้</a>
+        <?php if (isset($_SESSION['username'])) : ?>
+             <a> <strong><?php echo $_SESSION['username']; ?></strong></a>
+             <a href="index.php?logout='1'" style="color: red;">Logout</a>
+        <?php endif ?>
     <div id="menu-bar" class="fas fa-bars"></div>
 
 </header>

@@ -14,14 +14,11 @@
 
     <div id="menu-bar" class="fas fa-bars"></div>
 
-
-  
-
-    
     <nav class="navbar">
+		<a href="index.php">หน้าหลัก</a>
         <a href="product_menu.php">สินค้า</a>
         <a href="cart.php">ตระกร้าสินค้า</a>
-        <a href="order.php">ประวัติการสั่งซื้อ</a>
+        <a href="history.php">ประวัติการสั่งซื้อ</a>
         <a href="address.php">ที่อยู่</a>
         <?php if (!isset($_SESSION['username'])) : ?>
         <a href="login.php">เข้าสู่ระบบ</a>
@@ -30,10 +27,7 @@
              <a> <strong><?php echo $_SESSION['username']; ?></strong></a>
              <a href="index.php?logout='1'" style="color: red;">Logout</a>
         <?php endif ?>
-        
-            
-            
-
+ 
     </nav>
     
     <div id="menu-bar" class="fas fa-bars"></div>

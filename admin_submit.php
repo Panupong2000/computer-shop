@@ -19,28 +19,15 @@
 
     <div id="menu-bar" class="fas fa-bars"></div>
 
-
-  
-
-    
     <nav class="navbar">
-        <a href="product_menu.php">สินค้า</a>
-        <a href="cart.php">ตระกร้าสินค้า</a>
-        <a href="history.php">ประวัติการสั่งซื้อ</a>
-        <a href="address.php">ที่อยู่</a>
-        <?php if (!isset($_SESSION['username'])) : ?>
-        <a href="login.php">เข้าสู่ระบบ</a>
-        <?php endif ?>
+        <a href="admin.php">หมวดหมู่</a>
+        <a href="admin_product.php">สินค้า</a>
+        <a href="admin_submit.php">ออเดอร์</a>
+        <a href="admin_user.php">ผู้ใช้</a>
         <?php if (isset($_SESSION['username'])) : ?>
              <a> <strong><?php echo $_SESSION['username']; ?></strong></a>
              <a href="index.php?logout='1'" style="color: red;">Logout</a>
         <?php endif ?>
-        
-            
-            
-
-    </nav>
-    
     <div id="menu-bar" class="fas fa-bars"></div>
 
 </header>
@@ -83,7 +70,7 @@ if(!empty($_SESSION['username']))
 		echo "<td width='1200' align='center'>" . $row["order_date"] . "></td>";
 		echo "<td width='334' align='center'>" . $row["totalprice"] . "</td>";
 		// echo "<td width='800' align='center'>รายละเอียดออเดอร์</td>";
-		echo "<td width='1200' align='center'>" ."<a href='history_detail.php?ID=$row[0]' >".'รายละเอียดออเดอร์'."</td>";
+		echo "<td width='1200' align='center'>" ."<a href='admin_history_detail.php?ID=$row[0]' >".'รายละเอียดออเดอร์'."</td>";
 		echo "<td width='334' align='center'>" . $row["amount"] . "</td>";
         echo "<td width='20000' align='center'>" . $row["status"] . "</td>";
 		
