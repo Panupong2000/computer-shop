@@ -41,6 +41,7 @@ if (isset($_POST['add'])){
 
     
     <nav class="navbar">
+        <a href="index.php">หน้าหลัก</a>
         <a href="product_menu.php">สินค้า</a>
         <a href="cart.php">ตระกร้าสินค้า</a>
         <a href="history.php">ประวัติการสั่งซื้อ</a>

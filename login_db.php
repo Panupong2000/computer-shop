@@ -13,6 +13,8 @@
         if (count($errors) == 0) {
             $query = "SELECT * FROM user WHERE username = '$username' AND password = '$password' ";
             $result = mysqli_query($conn, $query);
+            $row = mysqli_fetch_array($result);
+            $rank = $row["rank"];
            
             
             if  (mysqli_num_rows($result) == 1){
@@ -20,7 +22,11 @@
                 $_SESSION['username'] = $username;
                 $_SESSION['success'] = "";
                 echo $pass;
-                header("location: index.php");
+                if($rank == 'admin'){
+                    header("location: admin.php");
+                }else{
+                    header("location: index.php");
+                }
             }
                 
              
