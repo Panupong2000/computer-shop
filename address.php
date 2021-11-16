@@ -45,7 +45,7 @@
 </header>
     <?php
 
-
+if(isset($_SESSION['username'])){
 
     $username = $_SESSION['username'];
 	$sql = "SELECT * FROM user where username ='$username'";
@@ -56,9 +56,8 @@
     $sql2 = "SELECT * FROM address where id_user ='$id_user'";
     $query2 = mysqli_query($conn, $sql2);
     $row2 = mysqli_fetch_array($query2);
-
-    ?>
-    <?php if (empty($row2)) { ?>
+}
+     if (empty($row2)) { ?>
 
         <br /><br />
     <div class="container" style="width:600px;">

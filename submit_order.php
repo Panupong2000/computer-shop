@@ -9,10 +9,16 @@
 </head>
 <body>
 <?php
-if(empty($_SESSION['username'])){
-	echo "<script>alert('โปรดลงทะเบียนก่อน')</script>";
-	header("location : login.php");
-}
+if(!isset($_SESSION['username'])){
+	 ?>
+	 <script type="text/javascript">
+	alert("โปรดลงทะเบียนก่อน");
+	window.location ='login.php';
+</script>
+ 
+	 <?php
+	 //header("location : login.php");
+}else{
 $total=0;
 $total_qty=0;
 $sum=0;
@@ -37,6 +43,16 @@ $sum=0;
 	$sql6 = "SELECT * FROM address where id_user ='$id_user'";
     $query6 = mysqli_query($conn, $sql6);
 	$row6 = mysqli_fetch_array($query6);
+	if(empty($row6)){
+		?>
+
+	 <script type="text/javascript">
+		alert("โปรดบันทึกที่อยู่ก่อน");
+		window.location ='address.php';
+	</script>	
+ 
+	 <?php
+	}else{
 	$id_address = $row6["id_address"];
 
 	$sql1	= "INSERT INTO `orders`(`order_date`, `totalprice`, `amount`, `id_user`,`id_address`) 
@@ -76,6 +92,8 @@ $sum=0;
 		mysqli_query($conn, "ROLLBACK");  
 		$msg = "บันทึกข้อมูลไม่สำเร็จ กรุณาติดต่อเจ้าหน้าที่ค่ะ ";	
 	}
+	}
+}
     
 ?>
 

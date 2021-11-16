@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include("connect.php");
-
+if(isset($_SESSION['username'])){
 if (isset($_POST['submit'])){
     $address = $_POST['address'];
     $id_country = $_POST['country'];
@@ -51,6 +51,14 @@ $sql	= "INSERT INTO `address`( `address`, `country`, `state`, `city`, `zipcode`,
 
         echo "<script type='text/javascript'>alert('เพิ่มที่อยู่เสร็จสิ้นแล้ว');</script>";
         header("location:address.php");
-    
+}else{
+    ?>
+    <script type="text/javascript">
+      alert("โปรดลงทะเบียนก่อน");
+        window.location ='login.php';
+    </script>   
+
+    <?php
+}
 
 ?>
