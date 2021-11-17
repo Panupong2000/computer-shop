@@ -26,6 +26,7 @@ if (isset($_POST['add'])){
     <head> 
         <meta charset="utf-8">
         <link rel="stylesheet" href="./style_product.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </head>
 
     
@@ -34,10 +35,6 @@ if (isset($_POST['add'])){
 <header>
     <a href="index.php" class="logo"><i class="fas fa-ytensils"></i>commm</a>
 
-    <div id="menu-bar" class="fas fa-bars"></div>
-
-
-  
 
     
     <nav class="navbar">
@@ -113,5 +110,7 @@ if (isset($_POST['add'])){
             </div>
     </section>
         </div>
+        
+        <script src="script.js"></script>
 </body>
 </html>

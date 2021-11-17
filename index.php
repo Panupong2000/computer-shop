@@ -44,7 +44,7 @@
 <header>
     <a href="#" class="logo"><i class="fas fa-ytensils"></i>commm</a>
 
-    <div id="menu-bar" class="fas fa-bars"></div> 
+    
     <nav class="navbar">
         <a href="index.php">หน้าหลัก</a>
         <a href="product_menu.php">สินค้า</a>
