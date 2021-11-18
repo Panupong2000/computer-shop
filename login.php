@@ -16,10 +16,6 @@
 
     <div id="menu-bar" class="fas fa-bars"></div>
 
-
-  
-
-    
     <nav class="navbar">
 		<a href="index.php">หน้าหลัก</a>
         <a href="product_menu.php">สินค้า</a>
@@ -33,10 +29,7 @@
              <a> <strong><?php echo $_SESSION['username']; ?></strong></a>
              <a href="index.php?logout='1'" style="color: red;">Logout</a>
         <?php endif ?>
-        
-            
-            
-
+ 
     </nav>
     
     <div id="menu-bar" class="fas fa-bars"></div>

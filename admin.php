@@ -42,7 +42,7 @@
     <div id="menu-bar" class="fas fa-bars"></div>
 
 </header>
-
+<section>
 <form style="padding-top: 100px;" action="admin_addcate.php" method="post">
     <h1>ฟอร์มเพิ่มสินค้า</h1><br>
     ประเภทสินค้า: <input type="text" name="cate_name"><br>
@@ -97,7 +97,7 @@
 </tr>
 </table>
 
-
+</section>
     <!-- custom js file link -->
     <script src="script.js"></script>
     
