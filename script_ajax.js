@@ -43,7 +43,7 @@ $('document').ready(function() {
             return;
         }
 
-        var pattern_email = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+        var pattern_email = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3,}$/;
         if (!pattern_email.exec(email)) {
             $('#email').parent().removeClass();
             $('#email').parent().addClass('form_error');
@@ -118,7 +118,7 @@ $('document').ready(function() {
             return;
         }
 
-        var pattern_phone = /^((\+66|0)(\d{1,2}\-?\d{3}\-?\d{3,4}))+$/;
+        var pattern_phone = /^((\+[0-9]{1,3}|0|)(\d{1,2}\-?\d{3,4}\-?\d{3,4}))+$/;
         if (!pattern_phone.exec(phone)) {
             $('#phone').parent().removeClass();
             $('#phone').parent().addClass('form_error');
