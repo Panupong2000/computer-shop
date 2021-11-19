@@ -43,6 +43,8 @@
 
 </header>
 
+<section>
+
 <form style="padding-top: 100px;" action="admin_addcate.php" method="post">
     <h1>ฟอร์มเพิ่มสินค้า</h1><br>
     ประเภทสินค้า: <input type="text" name="cate_name"><br>
@@ -100,6 +102,7 @@
 
     <!-- custom js file link -->
     <script src="script.js"></script>
-    
+</section>
+
 </body>
 </html>
