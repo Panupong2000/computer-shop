@@ -45,18 +45,19 @@
 		<h1>Register</h1>
 		<div id="error_msg"></div>
 		<div>
-			<input type="text" name="username" placeholder="Username" id="username" >
+			<input type="text" name="username" placeholder="Username" id="username" ><br>
 			<span></span>
 		</div>
 		<div>
-			<input type="text" name="email" placeholder="Email" id="email">
+			<input type="text" name="email" placeholder="Email" id="email"><br>
 			<span></span>
 		</div>
         <div>
-			<input type="name" name="name" placeholder="name" id="name" required pattern="^[ก-๏\s]+$">
+			<input type="name" name="name" placeholder="name" id="name" >
 		</div>
+			<span></span>
         <div>
-			<input type="Lname" name="Lname" placeholder="Lastname" id="Lname" required pattern="^[ก-๏\s]+$">
+			<input type="Lname" name="Lname" placeholder="Lastname" id="Lname" >
 		</div>
         <div>
 			<input type="phone" name="phone" placeholder="Phone" id="phone">
