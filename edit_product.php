@@ -21,6 +21,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="style_index.css">
+    <link rel="stylesheet" href="style_admin.css">
 </head>
 <body style="font-size: large;">
 
@@ -41,18 +42,24 @@
     <div id="menu-bar" class="fas fa-bars"></div>
 
 </header>
-
+<section>
+    <div style="width: 800px;">
 <form style="padding-top: 100px;" action="edit_productd_db.php" method="post">
     <h1>แก้ไขสินค้า</h1>
     <input type="hidden" name="pid" value="<?=$id?>">
-    ชื่อสินค้า: <input type="text" name="pname"><br>
-    ราคาสินค้า : <input type="number" name="price"><br>
-    จำนวน : <input type="number" name="amount"><br>
-    ชื่อรูป : <input type="text" name="imgpro"><br>
-    รายละเอียดสินค้า: <br>
-    <textarea name="detail" row="3" cols="40"></textarea><br>
-    
-    <select name="cate">
+    <label for="fname">ชื่อสินค้า</label>
+    <input type="text" name="pname"><br>
+    <label for="fname">ราคาสินค้า</label>
+    <input type="number" name="price"><br>
+    <label for="fname">จำนวน</label>
+    <input type="number" name="amount"><br>
+    <label for="fname">ชื่อรูป</label>
+    <input type="text" name="imgpro"><br>
+    <label for="fname">รายละเอียดสินค้า</label>
+    <input type="text" name="detail" row="3" cols="40"></input><br>
+
+
+    <select name="cate" style="width:300px; height: 100px; font-size:20px;">
         <?php
             $sql = "select * from category ";
             $query = mysqli_query($conn, $sql);
@@ -65,12 +72,14 @@
     </select>
     <br>
     <input type="submit" value="แก้ไขสินค้า">
-    
+    </div>
+</section>
 </form>
 
 
     <!-- custom js file link -->
     <script src="script.js"></script>
+
     
 </body>
 </html>

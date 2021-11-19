@@ -21,6 +21,7 @@ if (isset($_POST['add'])){
    
 }
 
+
 ?>
 <html>
     <head> 
@@ -35,12 +36,18 @@ if (isset($_POST['add'])){
     <a href="index.php" class="logo"><i class="fas fa-ytensils"></i>commm</a>
 
     <div id="menu-bar" class="fas fa-bars"></div>
-
-
-  
-
     
+
+  <div style="overflow: hidden;
+  background-color: #e9e9e9;
+  size:50px">
+    <form action="product_menu.php" method="POST">
+        <input type="text" name="search" placeholder="ค้นหา.." >
+        <input type="submit">
+    </form>
+    </div>
     <nav class="navbar">
+        <a href="index.php">หน้าหลัก</a>
         <a href="product_menu.php">สินค้า</a>
         <a href="cart.php">ตระกร้าสินค้า</a>
         <a href="history.php">ประวัติการสั่งซื้อ</a>
@@ -67,17 +74,24 @@ if (isset($_POST['add'])){
         if(isset($_GET['cate'])){
             $id_cate = $_GET['cate'];
             $sql1 = "SELECT * FROM product WHERE id_cate = $id_cate"; 
-        }else{
+        }else if (isset($_POST['search'])){
+            $search = $_POST['search'];
+            $sql1 = "SELECT * FROM `product` WHERE pname LIKE '%$search%'";
+
+        }
+        else{
             $sql1 = "SELECT * FROM product ";
         }
           
+         $result1 = mysqli_query($conn, $sql1);
+         
           $sql2 = "SELECT * FROM category ";
 
-          $result1 = mysqli_query($conn, $sql1);
           $result2 = mysqli_query($conn, $sql2);
 
         ?>
-    <div class="menu">   
+    <div class="menu">
+        <div style="text-align: center; font-size :20px;"><h1>หมวดหมู่สินค้า</h1>   </div>
     <?php while ($row1 = mysqli_fetch_array($result2)) : ?>
         <div class="vertical-menu">
             <a href="product_menu.php?cate=<?=$row1["Id_cate"]?>" class="active"><?=$row1["cate_name"]?></a>
@@ -92,16 +106,19 @@ if (isset($_POST['add'])){
             <div class="box">
                 <form action="product_menu.php" method="post">
                 <div class="relative">
-                    <div class="image">
+                    <div class="image" style="text-align: center;">
                         <img src='images/<?=$row["imgpro"]?>' alt="">
                      </div>
                     <div class="namepro">
-                    <span><?=$row ["pname"]?></span>
+                    <span><h4><?=$row ["pname"]?></h4></span>
                     </div>
-                    <div>
-                    <span><?=number_format($row ["price"])?></span>
+                    <div style="height: 100px;">
+                    <span><?=$row ["detail_product"]?></span>
                     </div>
-                    <div>
+                    <div style="height: 20px;">
+                    <span>ราคา  <?=number_format($row ["price"])?> บาท</span>
+                    </div><br>
+                    <div style="text-align: center;">
                     <button class="btn" type="submit"  name="add">Add to Cart</button>
                     <input type='hidden' name='product_id' value='<?=$row['id_product']?>'>
                     </div>
@@ -112,5 +129,6 @@ if (isset($_POST['add'])){
             </div>
     </section>
         </div>
+
 </body>
 </html>

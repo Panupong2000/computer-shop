@@ -16,30 +16,17 @@
 
 <header>
     <a href="#" class="logo"><i class="fas fa-ytensils"></i>commm</a>
-
     <div id="menu-bar" class="fas fa-bars"></div>
-
-    
     <nav class="navbar">
-        <a href="product_menu.php">สินค้า</a>
-        <a href="cart.php">ตระกร้าสินค้า</a>
-        <a href="history.php">ประวัติการสั่งซื้อ</a>
-        <a href="address.php">ที่อยู่</a>
-        <?php if (!isset($_SESSION['username'])) : ?>
-        <a href="login.php">เข้าสู่ระบบ</a>
-        <?php endif ?>
+        <a href="admin.php">หมวดหมู่</a>
+        <a href="admin_product.php">สินค้า</a>
+        <a href="admin_submit.php">ออเดอร์</a>
+        <a href="admin_user.php">ผู้ใช้</a>
         <?php if (isset($_SESSION['username'])) : ?>
              <a> <strong><?php echo $_SESSION['username']; ?></strong></a>
              <a href="index.php?logout='1'" style="color: red;">Logout</a>
         <?php endif ?>
-        
-            
-            
-
-    </nav>
-    
     <div id="menu-bar" class="fas fa-bars"></div>
-
 </header>
 
 <section class="home" id="home">
@@ -109,26 +96,19 @@ if(!empty($_SESSION['username']))
     
 
 ?>
-<tr>
-<td><a href="product_menu.php">กลับหน้ารายการสินค้า</a></td>
-<td colspan="4" align="right">
-	
-	<input type='hidden' name='id_product' value='<?=$row['id_product']?>'>
-    
-</td>
-</tr>
 </table>
-<!-- <p> <?=$row3["name"]?> </p>
-<p> <?=$row3["Lname"]?> </p>
-<p> <?=$row3["phone"]?> </p>
-<p> <?=$row4["address"]?> </p>
-<p> <?=$row4["country"]?> </p>
-<p> <?=$row4["state"]?> </p>
-<p> <?=$row4["city"]?> </p>
-<p> <?=$row4["zipcode"]?> </p> -->
 </form>
+<div>
+<p> ชื่อ :  <?=$row3["name"]?> </p>
+<p> นามสกุล : <?=$row3["Lname"]?> </p>
+<p> เบอร์ : <?=$row3["phone"]?> </p>
+<p> ที่อยู่ : <?=$row4["address"]?> </p>
+<p> จังหวัด : <?=$row4["country"]?> </p>
+<p> เขต/อำเภอ : <?=$row4["state"]?> </p>
+<p> แขวง/ตำบล : <?=$row4["city"]?> </p>
+<p> รหัสไปรษณีย์ : <?=$row4["zipcode"]?> </p>
+</div>
 </section>
-
-
+    
 </body>
 </html>

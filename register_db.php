@@ -1,6 +1,6 @@
 <?php 
 
-    include("connect.php"); 
+    include("connect.php");
 
     if (isset($_POST['username_check'])) {
         $username = $_POST['username'];
@@ -25,18 +25,6 @@
         }
         exit();
     }
-
-    // if (isset($_POST['name_check'])) {
-    //     $email = $_POST['name'];
-    //     $results = mysqli_query($conn, $sql);
-    //     if (mysqli_num_rows($results) > 0) {
-    //         echo 'taken';
-    //     } else {
-           
-    //     }
-    //     exit();
-    // }
-
 
     if (isset($_POST['save'])) {
         $username = $_POST['username'];
