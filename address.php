@@ -16,7 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="style_address.css"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
 
 </head>
 
@@ -90,7 +90,7 @@ if(isset($_SESSION['username'])){
 
         <?php }else{ ?>
 
-            <section style="text-align: center; font-size:30px;" id="section"> <h1>ที่อยู่</h1></section>
+            <section style="text-align: center; font-size:3ถข0px;" id="section"> <h1>ที่อยู่</h1></section>
                 <p>ที่อยู่: <?= $row2["address"]?></p>
                 <p>จังหวัด: <?= $row2["country"]?></p>
                 <p>เขต/อำเภอ: <?= $row2["state"]?></p>
