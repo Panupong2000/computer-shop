@@ -9,6 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="style_cart.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <title>Shopping Cart</title>
 </head>
 
@@ -17,7 +18,7 @@
 <header>
     <a href="#" class="logo"><i class="fas fa-ytensils"></i>commm</a>
 
-    <div id="menu-bar" class="fas fa-bars"></div>
+    
     <nav class="navbar">
         <a href="index.php">หน้าหลัก</a>
         <a href="product_menu.php">สินค้า</a>
@@ -73,7 +74,7 @@ if(!empty($_SESSION['username']))
 		echo "<td width='1200' align='center'>" . $row["status"] . "</td>";
 		 
 		
-		echo "</tr>";
+    echo "</tr>";
 }
 }
 ?>
@@ -88,5 +89,6 @@ if(!empty($_SESSION['username']))
 </table>
 </form>
 </section>
+<script src="script.js"></script>
 </body>
 </html>

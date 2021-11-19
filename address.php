@@ -16,6 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="style_address.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 </head>
 
@@ -23,7 +24,7 @@
 <header>
     <a href="#" class="logo"><i class="fas fa-ytensils"></i>commm</a>
 
-    <div id="menu-bar" class="fas fa-bars"></div> 
+    
     <nav class="navbar">
         <a href="index.php">หน้าหลัก</a>
         <a href="product_menu.php">สินค้า</a>
@@ -103,6 +104,7 @@ if(isset($_SESSION['username'])){
     <?php }?>
 
 
+    <script src="script.js"></script>
 </body>
 
 </html>

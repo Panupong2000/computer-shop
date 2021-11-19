@@ -31,6 +31,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="style_cart.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <title>Shopping Cart</title>
 </head>
 
@@ -39,7 +40,7 @@
 <header>
     <a href="#" class="logo"><i class="fas fa-ytensils"></i>commm</a>
 
-    <div id="menu-bar" class="fas fa-bars"></div>
+    
 
 
   
@@ -126,5 +127,6 @@ if(!empty($_SESSION['cart']))
 </table>
 </form>
 </section>
+<script src="script.js"></script>
 </body>
 </html>
