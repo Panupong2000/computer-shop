@@ -43,8 +43,6 @@
 
 <header>
     <a href="#" class="logo"><i class="fas fa-ytensils"></i>commm</a>
-
-    
     <nav class="navbar">
         <a href="index.php">หน้าหลัก</a>
         <a href="product_menu.php">สินค้า</a>
@@ -86,20 +84,22 @@
     <div class="box-container">
     <?php
 
-        $sql = "SELECT detail.id_product AS id_pro ,detail.name AS name , SUM(detail.amount) AS sum_amount ,product.price AS price ,product.imgpro AS imgpro 
-        FROM `detail` JOIN product ON detail.id_product=product.id_product 
-        GROUP BY name ORDER BY `sum_amount` DESC LIMIT 5";
+        $sql = "SELECT detail.id_product AS id_pro ,detail.name AS name , SUM(detail.amount) AS sum_amount ,
+                product.price AS price ,product.imgpro AS imgpro 
+                FROM `detail` JOIN product ON detail.id_product=product.id_product 
+                GROUP BY name ORDER BY `sum_amount` DESC LIMIT 5";
 		$query = mysqli_query($conn, $sql);
 		while ($row = mysqli_fetch_array($query)){
 ?>
         <div class="box">
         <form action="index.php" method="post">
         <img src='images/<?=$row["imgpro"]?>' >
-            <div>
+            <div style="height: 40px;">
                 <h2><span><?=$row ["name"]?></span></h2>
             </div>
-            <div>
-            <h1><span><?=number_format($row ["price"])?></span></h1>
+            
+            <div style="height: 20px;">
+            <h1><span>ราคา: <?=number_format($row ["price"])?> บาท</span></h1>
             </div>
 
             <button class="btn" type="submit"  name="add">Add to Cart</button>

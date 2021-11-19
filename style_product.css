@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+:root {
+    --red: #ff3838;
+}
 
 * {
     font-family: "Montserrat", sans-serif;
@@ -219,6 +223,7 @@ header .navbar a {
 .namepro {
     height: 50px;
 }
+
 
 /* media queries */
 
