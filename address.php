@@ -90,7 +90,7 @@ if(isset($_SESSION['username'])){
 
         <?php }else{ ?>
 
-            <section style="text-align: center;" id="section"> <h1>ที่อยู่</h1></section>
+            <section style="text-align: center; font-size:30px;" id="section"> <h1>ที่อยู่</h1></section>
                 <p>ที่อยู่: <?= $row2["address"]?></p>
                 <p>จังหวัด: <?= $row2["country"]?></p>
                 <p>เขต/อำเภอ: <?= $row2["state"]?></p>

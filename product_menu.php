@@ -84,12 +84,14 @@ if (isset($_POST['add'])){
         }
           
          $result1 = mysqli_query($conn, $sql1);
+         
           $sql2 = "SELECT * FROM category ";
 
           $result2 = mysqli_query($conn, $sql2);
 
         ?>
-    <div class="menu">   
+    <div class="menu">
+        <div style="text-align: center; font-size :20px;"><h1>หมวดหมู่สินค้า</h1>   </div>
     <?php while ($row1 = mysqli_fetch_array($result2)) : ?>
         <div class="vertical-menu">
             <a href="product_menu.php?cate=<?=$row1["Id_cate"]?>" class="active"><?=$row1["cate_name"]?></a>

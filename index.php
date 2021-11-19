@@ -97,8 +97,9 @@
             <div style="height: 40px;">
                 <h2><span><?=$row ["name"]?></span></h2>
             </div>
+            
             <div style="height: 20px;">
-            <h1><span><?=number_format($row ["price"])?></span></h1>
+            <h1><span>ราคา: <?=number_format($row ["price"])?> บาท</span></h1>
             </div>
 
             <button class="btn" type="submit"  name="add">Add to Cart</button>
