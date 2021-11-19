@@ -42,28 +42,40 @@ $('document').ready(function() {
             email_state = false;
             return;
         }
-        $.ajax({
-            url: 'register.php',
-            type: 'post',
-            data: {
-                'email_check': 1,
-                'email': email
-            },
-            success: function(response) {
-                if (response == 'taken') {
-                    email_state = false;
-                    $('#email').parent().removeClass();
-                    $('#email').parent().addClass('form_error');
-                    $('#email').siblings("span").text("อีเมล์นี้ถูกใช้งานไปแล้ว");
-                } else if (response == "not_taken") {
-                    email_state = true;
-                    $('#email').parent().removeClass();
-                    $('#email').parent().addClass('form_success');
-                    $('#email').siblings("span").text("อีเมล์นี้สามารถใช้งานได้");
+
+        var pattern_email = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+        if (!pattern_email.exec(email)) {
+            $('#email').parent().removeClass();
+            $('#email').parent().addClass('form_error');
+            $('#email').siblings("span").text("กรอกฟอร์มไม่ถูกต้อง");
+
+        } else {
+
+            $.ajax({
+                url: 'register.php',
+                type: 'post',
+                data: {
+                    'email_check': 1,
+                    'email': email
+
+                },
+                success: function(response) {
+                    if (response == 'taken') {
+                        email_state = false;
+                        $('#email').parent().removeClass();
+                        $('#email').parent().addClass('form_error');
+                        $('#email').siblings("span").text("อีเมล์นี้ถูกใช้งานไปแล้ว");
+                    } else if (response == "not_taken") {
+                        email_state = true;
+                        $('#email').parent().removeClass();
+                        $('#email').parent().addClass('form_success');
+                        $('#email').siblings("span").text("อีเมล์นี้สามารถใช้งานได้");
+                    }
                 }
-            }
-        })
+            })
+        }
     });
+
 
     // $('#name').on('blur', function() {
     //     var name = $('#name').val();
@@ -71,22 +83,52 @@ $('document').ready(function() {
     //         name_state = false;
     //         return;
     //     }
-    //     });
+
+    //     var pattern_name = /^[ก-๏\s]+$/;
+    //     if (!pattern_name.exec(name)) {
+    //         $('#name').parent().removeClass();
+    //         $('#name').parent().addClass('form_error');
+    //         $('#name').siblings("span").text("กรอกภาษาไทยเท่านั้น");
+
+    //     }
+    // });
 
     // $('#Lname').on('blur', function() {
-    //      var Lname = $('#Lname').val();
-    //      if (Lname == '') {
+    //     var Lname = $('#Lname').val();
+    //     if (Lname == '') {
     //         Lname_state = false;
-    //          return;
-    //      }
-    //      });
-    // $('#phone').on('blur', function() {
-    //     var phone = $('#phone').val();
-    //     if (phone == '') {
-    //         phone_state = false;
     //         return;
     //     }
-    //     });
+
+    //     var pattern_Lname = /^[ก-๏\s]+$/;
+    //     if (!pattern_Lname.exec(Lname)) {
+    //         $('#Lname').parent().removeClass();
+    //         $('#Lname').parent().addClass('form_error');
+    //         $('#Lname').siblings("span").text("กรอกภาษาไทยเท่านั้น");
+
+    //     }
+
+
+    // });
+
+    $('#phone').on('blur', function() {
+        var phone = $('#phone').val();
+        if (phone == '') {
+            phone_state = false;
+            return;
+        }
+
+        var pattern_phone = /^((\+66|0)(\d{1,2}\-?\d{3}\-?\d{3,4}))+$/;
+        if (!pattern_phone.exec(phone)) {
+            $('#phone').parent().removeClass();
+            $('#phone').parent().addClass('form_error');
+            $('#phone').siblings("span").text("เบอร์โทรศัพท์ไม่ถูกต้อง");
+
+        }
+
+
+    });
+
 
 
     $('#reg_btn').on("click", function(e) {
@@ -100,7 +142,16 @@ $('document').ready(function() {
 
         if (username_state == false || email_state == false) {
             e.preventDefault();
-            $("#error_msg").text("กรุณากรอกฟอร์มให้ครบ");
+            $("#error_msg").text("กรุณากรอกชื่อผู้ใช้และอีเมล์");
+        } else if (name == '' || Lname == '') {
+            e.preventDefault();
+            $("#error_msg").text("กรุณากรอกชื่อและนามสกุล");
+        } else if (phone == '') {
+            e.preventDefault();
+            $("#error_msg").text("กรุณากรอกเบอร์โทรศัพท์");
+        } else if (password == '') {
+            e.preventDefault();
+            $("#error_msg").text("กรุณากรอกรหัสผ่าน");
         } else {
             $.ajax({
                 url: 'register.php',
