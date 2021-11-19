@@ -124,6 +124,12 @@ $('document').ready(function() {
             $('#phone').parent().addClass('form_error');
             $('#phone').siblings("span").text("เบอร์โทรศัพท์ไม่ถูกต้อง");
 
+        } else {
+            $('#phone').parent().removeClass();
+            $('#phone').parent().addClass('form_success');
+            $('#phone').siblings("span").text("เบอร์โทรศัพท์ถูกต้อง");
+
+
         }
 
 
