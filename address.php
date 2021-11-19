@@ -13,7 +13,9 @@
 <html>
 
 <head>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="style_address.css"> 
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
@@ -110,6 +112,7 @@ if(isset($_SESSION['username'])){
 </html>
 
 <script>
+    
     $(document).ready(function() {
 
         load_json_data_country();

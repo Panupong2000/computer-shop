@@ -9,16 +9,16 @@
 </head>
 <body>
 <?php
-if(!isset($_SESSION['username'])){
+
+if(!isset($_COOKIE['visit'])){
 	 ?>
 	 <script type="text/javascript">
 	alert("โปรดลงทะเบียนก่อน");
 	window.location ='login.php';
-</script>
- 
-	 <?php
-	 //header("location : login.php");
-}else{
+	</script>
+	 <?php }
+
+	else{
 $total=0;
 $total_qty=0;
 $sum=0;

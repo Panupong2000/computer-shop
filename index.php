@@ -4,8 +4,11 @@
     include("connect.php");  
 
     if (isset($_GET['logout'])) {
+
         unset($_SESSION['username']);
         unset($_SESSION['user_id']);
+        
+        setcookie("visit","",time());
         header('location: index.php');
     }
 

@@ -47,7 +47,7 @@
 			<span></span>
 		</div>
 		<div>
-			<input type="text" name="password" placeholder="Password" id="password">
+			<input type="password" name="password" placeholder="Password" id="password">
 			<span></span>
 		</div>
 		<div>

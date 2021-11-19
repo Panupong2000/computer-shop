@@ -24,7 +24,8 @@
                 echo $pass;
                 if($rank == 'admin'){
                     header("location: admin.php");
-                }else{
+                }else  if($rank == 'user'){
+                    setcookie("visit","have",time()+3600*8);
                     header("location: index.php");
                 }
             }
