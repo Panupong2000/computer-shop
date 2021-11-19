@@ -1,12 +1,12 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-}
-
-#form h1 {
+  }
+  
+  #form h1 {
     text-align: center;
-}
-
-#form {
+  }
+  
+  #form {
     text-align: center;
     width: 37%;
     margin: 100px auto;
@@ -14,9 +14,9 @@ body {
     border-radius: 1rem;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
     background: white;
-}
-
-#form input {
+  }
+  
+  #form input {
     width: 80%;
     height: 32px;
     margin: 5px 10px;
@@ -24,9 +24,9 @@ body {
     padding: 4px;
     border: none;
     border-bottom: 2px solid #ccc;
-}
-
-#reg_btn {
+  }
+  
+  #reg_btn {
     height: 35px;
     width: 80%;
     margin: 1rem 10%;
@@ -35,9 +35,8 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-#login_btn {
+  }
+  #login_btn {
     height: 35px;
     width: 80%;
     margin: 1rem 10%;
@@ -46,39 +45,40 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-.form_error span {
+  }
+  
+  .form_error span {
     width: 80%;
     height: 35px;
     margin: 3px 10%;
     font-size: 1.1rem;
     color: #d83d5a;
-}
-
-.form_error input {
+  }
+  
+  .form_error input {
     border: 1px solid #d83d5a;
-}
-
-.form_success span {
+  }
+  
+  .form_success span {
     width: 80%;
     height: 35px;
     margin: 3px 10%;
     font-size: 1.1rem;
     color: green;
-}
-
-.form_success input {
+  }
+  
+  .form_success input {
     border: 1px solid green;
-}
-
-#error_msg {
+  }
+  
+  #error_msg {
     color: red;
     text-align: center;
     margin: 10px auto;
-}
+  }
 
-* {
+
+  * {
     font-family: "Montserrat", sans-serif;
     margin: 0;
     padding: 0;
@@ -189,11 +189,51 @@ header .navbar a {
 }
 
 #menu-bar {
-    font-size: 3rem;
-    cursor: pointer;
-    background-color: #24252A;
-    border: .1rem solid #24252A;
-    border-radius: .3rem;
-    padding: .2rem 1.5rem;
-    display: none;
+  font-size: 3rem;
+  cursor: pointer;
+  background-color: white;
+  border: .1rem solid white;
+  border-radius: .3rem;
+  padding: .2rem 1.5rem;
+  display: none;
+}
+
+/* media queries */
+
+@media(max-width:991px) {
+  html {
+      font-size: 55%;
+  }
+  header {
+      padding: 2rem;
+  }
+  section {
+      padding: 2rem;
+  }
+}
+
+@media(max-width:768px) {
+  #menu-bar {
+      display: initial;
+  }
+  header .navbar {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #f7f7f7;
+      border-top: .1rem solid rgba(0, 0, 0, .1);
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  header .navbar.active {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  header .navbar a {
+      margin: 1.5rem;
+      padding: 1.5rem;
+      display: block;
+      border: .2rem solid rgba(0, 0, 0, .1);
+      border-left: .5rem solid var(--red);
+      background: #24252A;
+  }
 }

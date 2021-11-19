@@ -96,24 +96,18 @@ if(!empty($_SESSION['username']))
     
 
 ?>
-<tr>
-<td><a href="product_menu.php">กลับหน้ารายการสินค้า</a></td>
-<td colspan="4" align="right">
-	
-	<input type='hidden' name='id_product' value='<?=$row['id_product']?>'>
-    
-</td>
-</tr>
 </table>
-<p> <?=$row3["name"]?> </p>
-<p> <?=$row3["Lname"]?> </p>
-<p> <?=$row3["phone"]?> </p>
-<p> <?=$row4["address"]?> </p>
-<p> <?=$row4["country"]?> </p>
-<p> <?=$row4["state"]?> </p>
-<p> <?=$row4["city"]?> </p>
-<p> <?=$row4["zipcode"]?> </p>
 </form>
+<div>
+<p> ชื่อ :  <?=$row3["name"]?> </p>
+<p> นามสกุล : <?=$row3["Lname"]?> </p>
+<p> เบอร์ : <?=$row3["phone"]?> </p>
+<p> ที่อยู่ : <?=$row4["address"]?> </p>
+<p> จังหวัด : <?=$row4["country"]?> </p>
+<p> เขต/อำเภอ : <?=$row4["state"]?> </p>
+<p> แขวง/ตำบล : <?=$row4["city"]?> </p>
+<p> รหัสไปรษณีย์ : <?=$row4["zipcode"]?> </p>
+</div>
 </section>
     
 </body>

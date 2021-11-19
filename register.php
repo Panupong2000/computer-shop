@@ -7,13 +7,13 @@
 	<title>Register</title>
 
 	<link rel="stylesheet" href="style_login.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 	
 </head>
 <header>
     <a href="#" class="logo"><i class="fas fa-ytensils"></i>commm</a>
 
-    <div id="menu-bar" class="fas fa-bars"></div>
-
+    
     <nav class="navbar">
 		<a href="index.php">หน้าหลัก</a>
         <a href="product_menu.php">สินค้า</a>
@@ -36,36 +36,36 @@
 <body>
 	
 	<form id="form">
-		<h1>ลงทะเบียน</h1>
+		<h1>Register</h1>
 		<div id="error_msg"></div>
 		<div>
-			<input type="text" name="username" placeholder="ชื่อ" id="username" required pattern="^[a-zA-Z\s]+$">
+			<input type="text" name="username" placeholder="Username" id="username" ><br>
 			<span></span>
 		</div>
 		<div>
-			<input type="text" name="email" placeholder="อีเมล์" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+			<input type="text" name="email" placeholder="Email" id="email"><br>
 			<span></span>
 		</div>
         <div>
-			<input type="name" name="name" placeholder="ชื่อ" id="name" required pattern="^[ก-๏\s]+$">
+			<input type="name" name="name" placeholder="name" id="name" required pattern="^[ก-๏\s]+$">
 		</div>
         <div>
-			<input type="Lname" name="Lname" placeholder="นามสกุล" id="Lname" required pattern="^[ก-๏\s]+$">
+			<input type="Lname" name="Lname" placeholder="Lastname" id="Lname" required pattern="^[ก-๏\s]+$">
 		</div>
         <div>
-			<input type="phone" name="phone" placeholder="เบอร์โทรศัพท์" id="phone" required pattern="[0-9]{10}">
+			<input type="phone" name="phone" placeholder="Phone" id="phone">
 		</div>
 		<div>
-			<input type="password" name="password" placeholder="รหัสผ่าน" id="password" required pattern=".{6,}">
+			<input type="password" name="password" placeholder="Password" id="password">
 		</div>
 		<div>
-			<input type="submit" name="ลงทะเบียน">
+			<button tyoe="button" name="register" id="reg_btn">Register</button>
 		</div>
 		<a href="login.php">กลับหน้า login</a>
 	</form>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="script_ajax.js"></script>
-	
+	<script src="script.js"></script>
 </body>
 </html>

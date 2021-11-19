@@ -25,12 +25,12 @@ $('document').ready(function() {
                     username_state = false;
                     $('#username').parent().removeClass();
                     $('#username').parent().addClass('form_error');
-                    $('#username').siblings("span").text("Sorry... Username already taken");
+                    $('#username').siblings("span").text("ชื่อนี้ถูกใช้งานไปแล้ว");
                 } else if (response == "not_taken") {
                     username_state = true;
                     $('#username').parent().removeClass();
                     $('#username').parent().addClass('form_success');
-                    $('#username').siblings("span").text("Username available");
+                    $('#username').siblings("span").text("ชื่อนี้สามารถใช้งานได้");
                 }
             }
         })
@@ -54,12 +54,12 @@ $('document').ready(function() {
                     email_state = false;
                     $('#email').parent().removeClass();
                     $('#email').parent().addClass('form_error');
-                    $('#email').siblings("span").text("Sorry... Email already taken");
+                    $('#email').siblings("span").text("อีเมล์นี้ถูกใช้งานไปแล้ว");
                 } else if (response == "not_taken") {
                     email_state = true;
                     $('#email').parent().removeClass();
                     $('#email').parent().addClass('form_success');
-                    $('#email').siblings("span").text("Email available");
+                    $('#email').siblings("span").text("อีเมล์นี้สามารถใช้งานได้");
                 }
             }
         })
@@ -100,7 +100,7 @@ $('document').ready(function() {
 
         if (username_state == false || email_state == false) {
             e.preventDefault();
-            $("#error_msg").text("Fix the errors in the form first");
+            $("#error_msg").text("กรุณากรอกฟอร์มให้ครบ");
         } else {
             $.ajax({
                 url: 'register.php',
@@ -118,9 +118,9 @@ $('document').ready(function() {
                     alert('User saved');
                     $('#username').val('');
                     $('#email').val('');
-                    // $('#name').val('');
-                    // $('#Lname').val('');
-                    // $('#phone').val('');
+                    $('#name').val('');
+                    $('#Lname').val('');
+                    $('#phone').val('');
                     $('#password').val('');
                 }
             })

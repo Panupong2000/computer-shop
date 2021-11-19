@@ -9,17 +9,14 @@
 	<title>Login</title>
 
 	<link rel="stylesheet" href="style_login.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <header>
     <a href="#" class="logo"><i class="fas fa-ytensils"></i>commm</a>
 
-    <div id="menu-bar" class="fas fa-bars"></div>
+   
 
-
-  
-
-    
     <nav class="navbar">
 		<a href="index.php">หน้าหลัก</a>
         <a href="product_menu.php">สินค้า</a>
@@ -33,10 +30,7 @@
              <a> <strong><?php echo $_SESSION['username']; ?></strong></a>
              <a href="index.php?logout='1'" style="color: red;">Logout</a>
         <?php endif ?>
-        
-            
-            
-
+ 
     </nav>
     
     <div id="menu-bar" class="fas fa-bars"></div>
@@ -62,7 +56,7 @@
 		<a href="register.php">ลงทะเบียน</a>
 	</form>
 
-	
+	<script src="script.js"></script>
 </body>
 
 

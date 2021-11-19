@@ -20,6 +20,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="style_index.css">
+    <link rel="stylesheet" href="style_admin.css">
+   
+
 </head>
 <body style="font-size: large;">
 
@@ -44,15 +47,20 @@
 </header>
 
 <section>
-
+<div style="width: 800px;">
 <form style="padding-top: 100px;" action="admin_addproduct_db.php" method="post">
     <h1>ฟอร์มเพิ่มสินค้า</h1><br>
-    ชื่อสินค้า: <input type="text" name="pname"><br>
-    ราคาสินค้า : <input type="number" name="price"><br>
-    จำนวน : <input type="number" name="amount"><br>
-    ชื่อรูป : <input type="text" name="imgpro"><br>
-    
-    <select name="cate">
+    <label for="fname">ชื่อสินค้า</label>
+    <input type="text" name="pname"><br>
+    <label for="fname">ราคาสินค้า</label>
+    <input type="number" name="price"><br>
+    <label for="fname">จำนวน</label>
+    <input type="number" name="amount"><br>
+    <label for="fname">ชื่อรูป</label>
+    <input type="text" name="imgpro"><br>
+
+    <div class="custom-select" >
+    <select name="cate" style="width:300px; height: 100px; font-size:20px;">
         <?php
             $sql = "select * from category ";
             $query = mysqli_query($conn, $sql);
@@ -63,11 +71,14 @@
             }
         ?>
     </select>
-    <br>
-    รายละเอียดสินค้า: <br>
-    <textarea name="detail" row="3" cols="40"></textarea><br>
-    <input type="submit" value="เพิ่มสินค้า">
+    </div>
     
+    <br>
+    <label for="fname">รายละเอียดสินค้า</label>
+    <input type="text" name="detail" row="3" cols="40"></input><br>
+    <input style="font-size: 20px;" type="submit" value="เพิ่มสินค้า">
+    
+    </div>
 </form>
 
 </section>
