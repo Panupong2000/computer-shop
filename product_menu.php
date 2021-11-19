@@ -112,7 +112,7 @@ if (isset($_POST['add'])){
                     <div class="namepro">
                     <span><h4><?=$row ["pname"]?></h4></span>
                     </div>
-                    <div style="height: 100px;">
+                    <div style="height: 120px;">
                     <span><?=$row ["detail_product"]?></span>
                     </div>
                     <div style="height: 20px;">

@@ -42,8 +42,10 @@
             $query = "INSERT INTO user (username, email, password, name, Lname, phone) VALUES ('$username', '$email', '$password' ,  '$name' , '$Lname', ' $phone')";
             $results = mysqli_query($conn, $query);
             echo 'Saved';
+            header("location: index.php");
             exit();
         }
+                
     }
 
 

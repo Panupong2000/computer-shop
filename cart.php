@@ -69,7 +69,7 @@
 
 </header>
 
-<section class="home" id="home">
+<section class="home" id="home" style="padding-top: 100px;">
 <form id="frmcart" name="frmcart" method="post" action="?act=update">
   <table width="600" border="0" align="center" class="square">
     <tr>

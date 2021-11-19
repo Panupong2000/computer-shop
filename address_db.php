@@ -2,6 +2,7 @@
 session_start();
 include("connect.php");
 if(isset($_SESSION['username'])){
+
 if (isset($_POST['submit'])){
     $address = $_POST['address'];
     $id_country = $_POST['country'];
@@ -44,8 +45,8 @@ $sql1 = "SELECT * FROM user where username ='$username'";
 	$row5 = mysqli_fetch_array($query1);
 	$id_user = $row5["id_user"];
 
-$sql	= "INSERT INTO `address`( `address`, `country`, `state`, `city`, `zipcode`,`id_user`)
-            VALUES ('$address','$name_country','$name_state','$name_city','$zipcode','$id_user')";
+        $sql	= "INSERT INTO `address`( `address`, `country`, `state`, `city`, `zipcode`,`id_user`)
+                   VALUES ('$address','$name_country','$name_state','$name_city','$zipcode','$id_user')";
         
 		$query	= mysqli_query($conn, $sql);
 
