@@ -68,7 +68,7 @@
     <div class="content">
         <h1>commm</h1>
         <p>ขายคอม</p>
-        <a href="product_menu.php" class="btn">order now</a>
+        <a href="product_menu.php" class="btn">ไปหน้าสินค้า</a>
     </div>
 
     <div class="image">
@@ -102,7 +102,7 @@
             <h1><span>ราคา: <?=number_format($row ["price"])?> บาท</span></h1>
             </div>
 
-            <button class="btn" type="submit"  name="add">Add to Cart</button>
+            <button class="btn" type="submit"  name="add">เพิ่มไปที่ตระกร้าสินค้า</button>
             <input type='hidden' name='product_id' value='<?=$row['id_pro']?>'>
             </form>
         </div>
@@ -115,25 +115,25 @@
 
 <div class="step-container">
 
-    <h1 class="heading">how it <span>works</span></h1>
+    <h1 class="heading">วิธี <span>การสั่งซื้อ</span></h1>
 
     <section class="steps">
 
         <div class="box">
             <img src="images/step-1.png" width="200" alt="">
-            <h3>choose your product</h3>
+            <h3>เลือกสินค้า</h3>
         </div>
         <div class="box">
             <img src="images/step-3.png" width="200" alt="">
-            <h3>free and fast delivery</h3>
+            <h3>ฟรีบริการจัดส่ง</h3>
         </div>
         <div class="box">
             <img src="images/step-2.png" width="200" alt="">
-            <h3>easy payments methods</h3>
+            <h3>ชำระเงิน</h3>
         </div>
         <div class="box">
             <img src="images/step-4.png" width="200" alt="">
-            <h3>and finally, enjoy your product</h3>
+            <h3>สนุกไปกับสินค้าของท่าน</h3>
         </div>
     
     </section>
